@@ -110,11 +110,21 @@ $ git checkout [branch]
 ``` 
 
 ## 更新与合并（分支）
+- 下载远程仓库的所有变动
+```
+$ git fetch [remote]
+``` 
+
 - 更新本地仓库到最新改动
 ```
 $ git pull
 ``` 
 在你的工作目录中获取（fetch）并合并（merge）远端的改动。
+
+- 下载远程仓库的所有变动
+```
+$ git pull [remote] [branch]
+``` 
 
 - 合并其他分支到当前分支（如master）
 ```
@@ -126,6 +136,12 @@ $ git merge [branch]
 ```
 $ git add your_modify_fle
 ``` 
+
+- 上传本地指定分支到远程仓库
+```
+$ git push [remote] [branch]
+``` 
+
 
 ## 创建tag
 - 列出所有tag
@@ -161,9 +177,8 @@ $ git checkout -- <filename>
 
 - 丢弃本地所有改动
 ```
-checkout -- <filename>
+$ git reset --hard
 ``` 
-
 
 ## git查询
 - 显示有变更的文件
