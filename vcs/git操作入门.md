@@ -24,6 +24,12 @@ $ git config [--global] user.email "[email address]"
 ```
 - 快捷键
 
+## 基本概念
+![](https://git-scm.com/book/en/v2/images/areas.png)
+- Working directory：工作区
+- (Staging)Index directory：暂存区
+- Local repository：本地仓库
+- Remote repository：远端仓库
 
 ## 创建新仓库
 ```
@@ -252,9 +258,10 @@ $ git diff --shortstat "@{0 day ago}"
 $ git reflog
 ```
 
-
-
-
+## 参考链接
+* [Pro Git(en)](https://git-scm.com/book/en/v2) - git入门必读(英文）
+* [Pro Git(zh)](https://git-scm.com/book/zh/v2) - git入门必读(中文）
+* [Tech Talk](https://www.youtube.com/watch?v=4XpnKHJAok8) - Linus Torvalds on git
 
 
 
