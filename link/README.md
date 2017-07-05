@@ -1,6 +1,9 @@
 
 
 # 常用链接
+## 技能
+- [程序员技能图谱](https://github.com/TeamStuQ/skill-map)
+
 
 ## 服务器，性能压力测试工具
 - [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) - Apache HTTP server benchmarking tool
@@ -38,7 +41,7 @@
 ## 终端相关
 - [iterm2](https://www.iterm2.com/) - Mac 上最强大的终端iTerm2, 和oh my zsh配合非常完美
 - [oh my zsh](https://github.com/robbyrussell/oh-my-zs) - 辅助安装mac自带非常好用的shell
-
+- [brew](https://brew.sh) - The missing package manager for OS X, 安装包管理器
 
 ## 项目管理工具
 - [Redmine](www.redmine.org) - 用Ruby开发的基于web的项目管理软件，提供项目管理、wiki、新闻台等功能，可对接版本管理系统GIT、SVN、CVS等获取版本变更信息
