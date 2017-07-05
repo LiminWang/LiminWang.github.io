@@ -19,7 +19,7 @@
 * [ebook](ebook)
 
 ## other
-* [other topics](other/READ.md)
+* [other topics](other/README.md)
 
 ## links
-* [常用链接](link/READ.md)
+* [常用链接](link/README.md)
