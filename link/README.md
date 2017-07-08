@@ -15,6 +15,7 @@
 
 ## 技能
 - [程序员技能图谱](https://github.com/TeamStuQ/skill-map)
+- [git入门](http://backlogtool.com/git-guide/cn/])
 
 ## 性能压力测试工具
 - [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) - Apache HTTP server benchmarking tool
