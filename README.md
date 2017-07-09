@@ -6,6 +6,7 @@
 * [tcpdump and tcpreplay usage](how_to_tcpdump_replay_network_stream_in_linux.md)
 * [netstat常用参数](netstat.md)
 * [ethtool常用参数](ethtool.md)
+* [分布式服务框架Zookeeper](linux/zookeeper.md)
 
 # Mac
 * [Mac iterm2快捷键记录](mac/iterm2_quick_key.md)
@@ -17,6 +18,7 @@
 
 ## Version Control System(VCS)
 * [Git操作入门命令](vcs/git操作入门.md)
+* [持续构建和集成](Continuous_integration.md)
 
 ## ebook
 * [ebook](ebook)
