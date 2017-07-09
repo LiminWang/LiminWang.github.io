@@ -3,6 +3,9 @@
 ## Linux
 * [vimrc配置](linux/ssh无密码访问.md) - git开源, 不用自己维护
 * [mac/linux ssh无密码访问](linux/ssh无密码访问.md)
+* [tcpdump and tcpreplay usage](how_to_tcpdump_replay_network_stream_in_linux.md)
+* [netstat常用参数](netstat.md)
+* [ethtool常用参数](ethtool.md)
 
 # Mac
 * [Mac iterm2快捷键记录](mac/iterm2_quick_key.md)
