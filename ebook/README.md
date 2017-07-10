@@ -22,4 +22,5 @@
 
 ## Other
 - [程序员自我修养](other/One_Programmer_Prepare.pdf)
+- [Free Books for Programming](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md)
 
