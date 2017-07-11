@@ -14,6 +14,7 @@
 * [Mac iterm2快捷键记录](mac/iterm2_quick_key.md)
 * [Mac sz rz上传下载](mac/iterm2_支持远程服务器szrz上传下载功能.md)
 * [markdown语法说明](mac/markdown_syntax.md)
+* [Mac 开发配置手册](https://github.com/Aaaaaashu/Mac-dev-setup)
 
 ## management
 * [管理总结](management/dev_管理的思考总结.md)
