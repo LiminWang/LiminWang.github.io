@@ -11,8 +11,11 @@
 - [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
 
 
-## Linux
+## Linux/Open Source
 - [inux工具快速教程](https://github.com/me115/linuxtools_rst)
+- [像IDE一样使用 vim](https://github.com/yangyangwithgnu/use_vim_as_ide)
+- [开源软件架构](http://www.ituring.com.cn/book/1143)
+- [Vi.iMproved](linux/Vi.iMproved.VIM.isbn.0735710015.pdf)
 
 ## Tools
 - [一站式学习Wireshark](https://community.emc.com/thread/194901)

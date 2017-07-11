@@ -2,8 +2,8 @@
 
 ## Adapter RX and TX Buffer Tuning
 
-网络适配器接受和发送buf默认大小值一般都会比最大值设置要小, 一般建议尽量设置大一些，避免丢包。
-具体的配置命令如下:
+网络适配器接受和发送buf默认大小值一般都会比最大值设置要小, 一般建议尽量设置大
+一些，避免丢包。具体的配置命令如下:
 
 ### 查询
 
@@ -33,8 +33,9 @@ TX:256
 
 
 ## 适配器transmit队列长度
-一般来说来说， qlen=1000对10g的网络都足够用，但如果发现transmit错误变多，就需要考虑double这个值， 可以用`ip -s link`
-### 查询，`qlen`对应的值
+
+一般来说来说， qlen=1000对10g的网络都足够用，但如果发现transmit错误变多，就需
+要考虑double这个值， 可以用`ip -s link` ### 查询，`qlen`对应的值
 ```sh
 [root@localhost ~]# ip link
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT
