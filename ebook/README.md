@@ -17,6 +17,9 @@
 - [开源软件架构](http://www.ituring.com.cn/book/1143)
 - [Vi.iMproved](linux/Vi.iMproved.VIM.isbn.0735710015.pdf)
 - [跟我一起学Makefile](linux/Makefile编写.pdf)
+- [Shell脚本编程30分钟入门](https://github.com/qinjx/30min_guides/blob/master/shell.md)
+- [Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/)
+- [Unix Shell Programming](http://www.tutorialspoint.com/unix/unix-shell.htm)
 
 ## Tools
 - [一站式学习Wireshark](https://community.emc.com/thread/194901)
@@ -27,6 +30,7 @@
 
 ## Coding
 - [代码规范](https://github.com/ecomfe/spec)
+- [大家来学vim](http://www.study-area.org/tips/vim/index.html)
 
 ## Other
 - [Joel谈软件](http://local.joelonsoftware.com/wiki/Chinese_(Simplified)
