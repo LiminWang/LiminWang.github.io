@@ -16,6 +16,7 @@
 - [像IDE一样使用 vim](https://github.com/yangyangwithgnu/use_vim_as_ide)
 - [开源软件架构](http://www.ituring.com.cn/book/1143)
 - [Vi.iMproved](linux/Vi.iMproved.VIM.isbn.0735710015.pdf)
+- [跟我一起学Makefile](linux/Makefile编写.pdf)
 
 ## Tools
 - [一站式学习Wireshark](https://community.emc.com/thread/194901)
