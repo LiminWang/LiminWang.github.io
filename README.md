@@ -1,7 +1,7 @@
 # 归档记录
 
 ## Linux
-* [vimrc配置](linux/ssh无密码访问.md) - git开源, 不用自己维护
+* [vimrc配置](linux/vimrc.md) 
 * [mac/linux ssh无密码访问](linux/ssh无密码访问.md)
 * [tcpdump and tcpreplay usage](linux/how_to_tcpdump_replay_network_stream_in_linux.md)
 * [netstat常用参数](linux/netstat.md)
