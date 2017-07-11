@@ -24,6 +24,12 @@
 * [Git操作入门命令](vcs/git操作入门.md)
 * [持续构建和集成](vcs/Continuous_integration.md)
 
+## Coding
+* [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
+
+## 工具
+* [unix工具包使用](http://cb.vu/unixtoolbox_zh_CN.xhtml)
+
 ## ebook
 * [ebook](ebook)
 
