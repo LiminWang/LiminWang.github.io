@@ -7,6 +7,7 @@
 * [netstat常用参数](linux/netstat.md)
 * [ethtool常用参数](linux/ethtool.md)
 * [分布式服务框架Zookeeper](linux/zookeeper.md)
+* [Makefile指南](linux/makefile指南.md)
 
 # Mac
 * [mac工具](mac/mac_tools.md)
