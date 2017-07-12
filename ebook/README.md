@@ -33,7 +33,7 @@
 - [大家来学vim](http://www.study-area.org/tips/vim/index.html)
 
 ## Other
-- [Joel谈软件](http://local.joelonsoftware.com/wiki/Chinese_(Simplified)
+- [Joel谈软件](http://local.joelonsoftware.com/wiki/Chinese_(Simplified))
 - [約耳談軟體(Joel on Software)](http://local.joelonsoftware.com/wiki/首頁)
 - [程序员自我修养](other/One_Programmer_Prepare.pdf)
 - [Free Books for Programming](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md)
