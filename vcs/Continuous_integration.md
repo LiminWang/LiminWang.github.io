@@ -62,7 +62,7 @@
 ------
 
 
-![cd](./continuous_integration.png)
+![cd](./continuous_delivery.png)
 
 
 # 持续部署
@@ -77,7 +77,7 @@
 
 --------
 
-![cd](./continuous_integration.png)
+![cd](./continuous_deployment.png)
 
 
 # 流程说明 
