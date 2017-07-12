@@ -63,4 +63,5 @@
 
 ## 杂谈
 - [MacTalk-池建强的随想录](http://macshuo.com)
+- [Joel on Software](https://www.joelonsoftware.com)
 
