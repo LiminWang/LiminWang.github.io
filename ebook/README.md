@@ -6,6 +6,7 @@
 ## Management
 - [卓有成效的管理者](management/卓有成效的管理者.pdf)
 - [无压力工作](management/getting-things-done.pdf)
+- [人件](management/Peopleware中文版.pdf)
 
 ## Web
 - [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
