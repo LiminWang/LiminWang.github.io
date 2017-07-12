@@ -40,6 +40,9 @@
 - [code spec](https://github.com/ecomfe/spec)
 - [大家来学vim](http://www.study-area.org/tips/vim/index.html)
 
+## 跑步越野
+- [当我谈跑步时.我谈些什么.村上春树](run/当我谈跑步时.我谈些什么.村上春树.pdf)
+
 ## Other
 - [Joel谈软件](http://local.joelonsoftware.com/wiki/Chinese_(Simplified))
 - [約耳談軟體(Joel on Software)](http://local.joelonsoftware.com/wiki/首頁)
