@@ -24,6 +24,7 @@
 - [Shell脚本编程30分钟入门](https://github.com/qinjx/30min_guides/blob/master/shell.md)
 - [Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/)
 - [Unix Shell Programming](http://www.tutorialspoint.com/unix/unix-shell.htm)
+- [Debugging.with.GDB](linux/Debugging.with.GDB.the.GNU.Source.Level.Debugger.isbn.1882114884.pdf)
 
 ## Tools
 - [一站式学习Wireshark](https://community.emc.com/thread/194901)
