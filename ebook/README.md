@@ -12,6 +12,8 @@
 ## Web
 - [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
 - [REST CookBook](http://restcookbook.com)
+- [Best Practices for Speeding Up Your Web Site](https://developer.yahoo.com/performance/rules.html)
+- [构建高性能WEB站点](web/构建高性能WEB站点.pdf)
 
 ## Linux/Open Source
 - [inux工具快速教程](https://github.com/me115/linuxtools_rst)
