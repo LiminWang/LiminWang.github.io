@@ -19,14 +19,15 @@
 
 ## management
 * [管理总结](management/dev_管理的思考总结.md)
-* [管理总结](management/dev_管理的思考总结.md)
+* [管理总结PPT](management/dev_管理的思考总结.pdf)
 
 ## Version Control System(VCS)
 * [Git操作入门命令](vcs/git操作入门.md)
-* [持续构建和集成](vcs/Continuous_integration.md)
+* [持续构建和集成PPT](vcs/Continuous_integration.pdf)
 
 ## Coding
 * [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
+* [高效编程到原则笔记ppt](coding/高效编程的原则.pdf)
 
 ## 工具
 * [unix工具包使用](http://cb.vu/unixtoolbox_zh_CN.xhtml)
