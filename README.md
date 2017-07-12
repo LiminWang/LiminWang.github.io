@@ -20,6 +20,7 @@
 ## management
 * [管理总结](management/dev_管理的思考总结.md)
 * [管理总结PPT](management/dev_管理的思考总结.pdf)
+* [开会原则](management/开会原则.md)
 
 ## Version Control System(VCS)
 * [Git操作入门命令](vcs/git操作入门.md)
