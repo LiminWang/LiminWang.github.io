@@ -30,7 +30,7 @@
 - [Pro Git](https://git-scm.com/book/zh/v2)
 
 ## Product
-- [产品经理那些事儿](product/PM产品经理那些事儿.pdf]
+- [产品经理那些事儿](product/PM产品经理那些事儿.pdf)
 
 ## Coding
 - [code spec](https://github.com/ecomfe/spec)
