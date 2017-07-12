@@ -1,4 +1,4 @@
-# Ebook
+# Ebook(仅供自我学习参考使用）
 
 ## Design
 - [software architecture patterns](design/software-architecture-patterns.pdf)
@@ -29,8 +29,11 @@
 - [Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 - [Pro Git](https://git-scm.com/book/zh/v2)
 
+## Product
+- [产品经理那些事儿](product/PM产品经理那些事儿.pdf]
+
 ## Coding
-- [代码规范](https://github.com/ecomfe/spec)
+- [code spec](https://github.com/ecomfe/spec)
 - [大家来学vim](http://www.study-area.org/tips/vim/index.html)
 
 ## Other
