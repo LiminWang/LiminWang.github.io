@@ -8,6 +8,7 @@
 * [ethtool常用参数](linux/ethtool.md)
 * [分布式服务框架Zookeeper](linux/zookeeper.md)
 * [Makefile指南](linux/makefile指南.md)
+* [SAR性能优化](linux/sar_usage.md)
 
 # Mac
 * [mac工具](mac/mac_tools.md)
@@ -16,6 +17,9 @@
 * [Mac sz rz上传下载](mac/iterm2_支持远程服务器szrz上传下载功能.md)
 * [markdown语法说明](mac/markdown_syntax.md)
 * [Mac 开发配置手册](https://github.com/Aaaaaashu/Mac-dev-setup)
+
+## Video
+* [视频基础知识培训](video/video_introduction_ppt.pdf)
 
 ## management
 * [管理总结](management/dev_管理的思考总结.md)

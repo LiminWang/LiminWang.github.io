@@ -23,6 +23,8 @@ Option ⌥Control ⌃Caps Lock ⇪Fn
 | shift + Command + del  | 删除文件 |
 | Command + Shift + 4  | 全屏幕截屏, 并保存到桌面 |
 | Command + Shift + 3  | 通过鼠标选取截屏 |
+| space  | 预览 |
+| Command + option + space  | 搜索电脑 |
 
 
 

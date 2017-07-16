@@ -62,6 +62,7 @@
 - [Jenkins](https://jenkins.io) - Jenkins是一个用Java编写的开源的持续集成工具
 
 ## 杂谈
+- [How To Ask Questions The Smart Way](http://www.catb.org/%7Eesr/faqs/smart-questions.html)
 - [MacTalk-池建强的随想录](http://macshuo.com)
 - [Joel on Software](https://www.joelonsoftware.com)
 
