@@ -9,6 +9,7 @@
 * [分布式服务框架Zookeeper](linux/zookeeper.md)
 * [Makefile指南](linux/makefile指南.md)
 * [SAR性能优化](linux/sar_usage.md)
+* [CPU,内存查询](linux/cpu_memory使用率.md)
 
 # Mac
 * [mac工具](mac/mac_tools.md)
