@@ -25,7 +25,7 @@ $ scp .ssh/id_rsa.pub hostb:/~/ssh
 1. 更新授权key
 ``` bash
 $ cd ~/
-$ cat id_dsa.pub >> ~/.ssh/authorized_keys 
+$ cat id_rsa.pub >> ~/.ssh/authorized_keys 
 ```
 
 2. 设置文件和目录权限
