@@ -67,6 +67,30 @@ sar -W：查看页面交换发生状况
 - 怀疑内存存在瓶颈，可用sar -B、sar -r 和 sar -W 等来查看 
 - 怀疑I/O存在瓶颈，可用 sar -b、sar -u 和 sar -d 等来查看
 
+## 查看网络状况
+- DEV显示网络接口信息
+```sh
+[root@localhost ~]# sar -n DEV 1 2
+Linux 3.10.0-229.1.2.39163.MSSr4.el7.centos.x86_64 (localhost.localdomain)  2017年07月24日  _x86_64_    (8 CPU)
+
+22时23分53秒     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s
+22时23分54秒      eno1   2117.00   1131.00   2413.39   1504.32      0.00      0.00   2111.00
+22时23分54秒      eno2   1117.00    495.00   1398.82    604.54      0.00      0.00      0.00
+22时23分54秒        lo      7.00      7.00      0.37      0.37      0.00      0.00      0.00
+```
+
+- EDEV显示关于网络错误的统计数据
+```
+[root@localhost ~]# sar -n EDEV 2 10
+Linux 3.10.0-229.1.2.39163.MSSr4.el7.centos.x86_64 (localhost.localdomain)  2017年07月24日  _x86_64_    (8 CPU)
+
+22时58分38秒     IFACE   rxerr/s   txerr/s    coll/s  rxdrop/s  txdrop/s  txcarr/s  rxfram/s  rxfifo/s  txfifo/s
+22时58分40秒      eno1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+22时58分40秒      eno2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+22时58分40秒        lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+```
+
+
 ## 安装
 
 1. 有的linux系统下，默认可能没有安装这个包，使用apt-get install sysstat 来安装； 
