@@ -11,6 +11,7 @@
 * [SAR性能优化](linux/sar_usage.md)
 * [CPU,内存查询](linux/cpu_memory使用率.md)
 * [VPN搭建](linux/ipsec_vpn.md)
+* [CentOS7.2安装mysql步骤)(linux/centos7.2_mysql_install.md)
 
 # Mac
 * [mac工具](mac/mac_tools.md)
