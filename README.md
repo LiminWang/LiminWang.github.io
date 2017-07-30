@@ -30,7 +30,7 @@
 * [安装xen](linux/CentOS6.5安装xen.md)
 * [使用expect快速访问ssh,scp](linux/ssh_scp_quick_by_expect.md)
 
-# Mac
+## Mac
 * [mac工具](mac/mac_tools.md)
 * [mac快捷键](mac/mac_quick_key.md)
 * [Mac iterm2快捷键记录](mac/iterm2_quick_key.md)
