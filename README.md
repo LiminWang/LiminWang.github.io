@@ -12,7 +12,7 @@
 * [link](#link)
 
 
-## Linux
+# Linux
 * [vimrc配置](linux/vimrc.md) 
 * [mac/linux ssh无密码访问](linux/ssh无密码访问.md)
 * [tcpdump and tcpreplay usage](linux/how_to_tcpdump_replay_network_stream_in_linux.md)
@@ -30,7 +30,7 @@
 * [安装xen](linux/CentOS6.5安装xen.md)
 * [使用expect快速访问ssh,scp](linux/ssh_scp_quick_by_expect.md)
 
-## Mac
+# Mac
 * [mac工具](mac/mac_tools.md)
 * [mac快捷键](mac/mac_quick_key.md)
 * [Mac iterm2快捷键记录](mac/iterm2_quick_key.md)
@@ -38,31 +38,31 @@
 * [markdown语法说明](mac/markdown_syntax.md)
 * [Mac 开发配置手册](https://github.com/Aaaaaashu/Mac-dev-setup)
 
-## Video
+# Video
 * [视频基础知识培训](video/video_introduction_ppt.pdf)
 
-## Management
+# Management
 * [管理总结](management/dev_管理的思考总结.md)
 * [管理总结PPT](management/dev_管理的思考总结.pdf)
 * [开会原则](management/开会原则.md)
 * [GTD时间管理](management/GTD时间管理.pdf)
 
-## Version Control System
+# Version Control System
 * [Git操作入门命令](vcs/git操作入门.md)
 * [持续构建和集成PPT](vcs/Continuous_integration.pdf)
 
-## Coding
+# Coding
 * [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 * [高效编程到原则笔记ppt](coding/高效编程的原则.pdf)
 
-## 工具
+# 工具
 * [unix工具包使用](http://cb.vu/unixtoolbox_zh_CN.xhtml)
 
-## ebook
+# ebook
 * [ebook](ebook)
 
-## other
+# other
 * [other topics](other/README.md)
 
-## links
+# links
 * [常用链接](link/README.md)
