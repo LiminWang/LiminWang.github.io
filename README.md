@@ -14,6 +14,7 @@
 * [CentOS7.2安装mysql步骤](linux/centos7.2_mysql_install.md)
 * [CentOS服务控制](linux/centos_system_service.md)
 * [终端颜色显示](linux/linux_term_display_color.md)
+* [CentOS更换yum源步骤](linux/CentOS更换yum源步骤.md)
 
 # Mac
 * [mac工具](mac/mac_tools.md)
