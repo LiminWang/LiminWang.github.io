@@ -1,18 +1,18 @@
 # 归档记录
 # Table of Content
-* [Linux](#Linux)
-* [Mac](#Mac)
-* [Video](#Video)
-* [Managemenet](#Management)
-* [Version Control System](#Version Control System)
-* [Coding](#Coding)
+* [Linux](#linux)
+* [Mac](#mac)
+* [Video](#video)
+* [Managemenet](#management)
+* [VCS](#vcs)
+* [Coding](#coding)
 * [工具](#工具)
 * [ebook](#ebook)
 * [other](#other)
-* [link](#link)
+* [link](#links)
 
 
-# Linux
+# linux
 * [vimrc配置](linux/vimrc.md) 
 * [mac/linux ssh无密码访问](linux/ssh无密码访问.md)
 * [tcpdump and tcpreplay usage](linux/how_to_tcpdump_replay_network_stream_in_linux.md)
@@ -30,7 +30,7 @@
 * [安装xen](linux/CentOS6.5安装xen.md)
 * [使用expect快速访问ssh,scp](linux/ssh_scp_quick_by_expect.md)
 
-# Mac
+# mac
 * [mac工具](mac/mac_tools.md)
 * [mac快捷键](mac/mac_quick_key.md)
 * [Mac iterm2快捷键记录](mac/iterm2_quick_key.md)
@@ -38,20 +38,20 @@
 * [markdown语法说明](mac/markdown_syntax.md)
 * [Mac 开发配置手册](https://github.com/Aaaaaashu/Mac-dev-setup)
 
-# Video
+# video
 * [视频基础知识培训](video/video_introduction_ppt.pdf)
 
-# Management
+# management
 * [管理总结](management/dev_管理的思考总结.md)
 * [管理总结PPT](management/dev_管理的思考总结.pdf)
 * [开会原则](management/开会原则.md)
 * [GTD时间管理](management/GTD时间管理.pdf)
 
-# Version Control System
+# vcs
 * [Git操作入门命令](vcs/git操作入门.md)
 * [持续构建和集成PPT](vcs/Continuous_integration.pdf)
 
-# Coding
+# coding
 * [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 * [高效编程到原则笔记ppt](coding/高效编程的原则.pdf)
 
