@@ -86,4 +86,5 @@ $ yum reboot
 - [Centos XEN[](https://wiki.centos.org/zh/HowTos/Xen)
 - [Xen4 Libvirt](https://wiki.centos.org/zh-tw/HowTos/Xen/Xen4QuickStart/Xen4Libvirt)
 - [Xen创建虚拟机](http://blog.csdn.net/cybertan/article/details/8365819)
-
+- [Xen 的配置文件用法](https://www.xenproject.org)
+- [CentOS7安装xen](http://www.jianshu.com/p/c7eacd56fd90)
