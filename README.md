@@ -15,6 +15,8 @@
 * [CentOS服务控制](linux/centos_system_service.md)
 * [终端颜色显示](linux/linux_term_display_color.md)
 * [CentOS更换yum源步骤](linux/CentOS更换yum源步骤.md)
+* [安装xen](linux/CentOS6.5安装xen.md)
+* [使用expect快速访问ssh,scp](linux/sh_scp_quick_by_expect.md)
 
 # Mac
 * [mac工具](mac/mac_tools.md)
