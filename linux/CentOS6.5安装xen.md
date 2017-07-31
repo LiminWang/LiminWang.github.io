@@ -1,6 +1,6 @@
 # CentOS6.5安装Xen4.2
 
-#＃ 更换163源
+## 更换163源
 ```sh
 $ cd /etc/yum.repos.d/
 $ mv CentOS-Base.repo CentOS-Base.repo.bk
@@ -83,7 +83,7 @@ $ yum reboot
 
 
 ## 参考
-- [Centos XEN[](https://wiki.centos.org/zh/HowTos/Xen)
+- [Centos XEN](https://wiki.centos.org/zh/HowTos/Xen)
 - [Xen4 Libvirt](https://wiki.centos.org/zh-tw/HowTos/Xen/Xen4QuickStart/Xen4Libvirt)
 - [Xen创建虚拟机](http://blog.csdn.net/cybertan/article/details/8365819)
 - [Xen 的配置文件用法](https://www.xenproject.org)
