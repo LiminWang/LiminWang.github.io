@@ -78,7 +78,7 @@ virt-manager,      virt-install,       virsh,       xen-create-image
 ### 安裝libvirt
 ```
 $ yum install libvirt python-virtinst libvirt-daemon-xen
-$ yum reboot
+$ reboot
 ```
 
 
