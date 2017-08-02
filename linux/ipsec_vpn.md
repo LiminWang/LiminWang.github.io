@@ -80,3 +80,10 @@ $ ipsec verify
 ipsec whack --trafficstatus
 ```
 
+## mac client连接vpn后，无法连接内部网
+* 路由加上内部网关
+```
+$ sudo route delete -net 192.168.1.0
+$ sudo route add -net 192.168.1.0 -netmask 255.255.255.0 -gateway 192.168.3.1
+```
+
