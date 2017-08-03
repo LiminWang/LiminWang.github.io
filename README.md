@@ -29,6 +29,7 @@
 * [CentOS更换yum源步骤](linux/CentOS更换yum源步骤.md)
 * [安装xen](linux/CentOS6.5安装xen.md)
 * [使用expect快速访问ssh,scp](linux/ssh_scp_quick_by_expect.md)
+* [linux/c链接c++库接口.md](linux/c链接c++库接口.md)
 
 # mac
 * [mac工具](mac/mac_tools.md)
