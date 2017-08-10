@@ -44,7 +44,7 @@ sar -q: 查看平均负载
 
 
 ## 查看内存使用状况
-sar -r： 指定-r之后，可查看物理内存使用状况；
+* sar -r： 指定-r之后，可查看物理内存使用状况；
 
 - kbmemfree：这个值和free命令中的free值基本一致,所以它不包括buffer和cache的空间.
 - kbmemused：这个值和free命令中的used值基本一致,所以它包括buffer和cache的空间.
@@ -52,6 +52,51 @@ sar -r： 指定-r之后，可查看物理内存使用状况；
 - kbbuffers和kbcached：这两个值就是free命令中的buffer和cache.
 - kbcommit：保证当前系统所需要的内存,即为了确保不溢出而需要的内存(RAM+swap).
 - %commit：这个值是kbcommit与内存总量(包括swap)的一个百分比.
+
+```
+[root@localhost ~]# sar -r 2 5
+Linux 3.10.0-327.13.1.el7.x86_64 (localhost.localdomain)    2017年08月10日
+_x86_64_    (8 CPU)
+
+12时31分28秒 kbmemfree kbmemused  %memused kbbuffers  kbcached  kbcommit
+%commit  kbactive   kbinact   kbdirty
+12时31分30秒  27824160   2843196      9.27      1268   1009196   3564992
+10.26   1814332    491436       416
+
+12时31分32秒  27825792   2841564      9.27      1268   1009144   3564984
+10.26   1813232    491380       364
+12时31分34秒  27821052   2846304      9.28      1268   1009148   3564972
+10.25   1818272    491376       368
+12时31分36秒  27827920   2839436      9.26      1268   1009168   3565416
+10.26   1812532    491392       388
+12时31分38秒  27825728   2841628      9.27      1268   1009232   3565376
+10.26   1813652    491448       452
+平均时间:  27824930   2842426      9.27      1268   1009178   3565148
+10.26   1814404    491406       398
+```
+
+* sar -B: 查询内存分页统计
+````
+[root@localhost ~]# sar -B 2 5
+Linux 3.10.0-327.13.1.el7.x86_64 (localhost.localdomain)    2017年08月10日
+_x86_64_    (8 CPU)
+
+12时28分42秒  pgpgin/s pgpgout/s   fault/s  majflt/s  pgfree/s pgscank/s
+pgscand/s pgsteal/s    %vmeff
+12时28分44秒      0.00      0.00  20524.50      0.00  37369.50      0.00
+0.00      0.00      0.00
+12时28分46秒      0.00      8.00  20257.00      0.00  38822.50      0.00
+0.00      0.00      0.00
+12时28分48秒      0.00      0.00  20552.00      0.00  37201.50      0.00
+0.00      0.00      0.00
+12时28分50秒      0.00     34.00  20766.00      0.00  38611.50      0.00
+0.00      0.00      0.00
+12时28分52秒      0.00      0.00  24789.00      0.00  42263.00      0.00
+0.00      0.00      0.00
+平均时间:      0.00      8.40  21377.70      0.00  38853.60      0.00
+0.00      0.00      0.00
+[root@localhost ~]#
+```
 
 ## 查看页面交换发生状况
 sar -W：查看页面交换发生状况
@@ -93,10 +138,22 @@ Linux 3.10.0-229.1.2.39163.MSSr4.el7.centos.x86_64 (localhost.localdomain)  2017
 
 ## 安装
 
+### debian
 1. 有的linux系统下，默认可能没有安装这个包，使用apt-get install sysstat 来安装； 
+
+
 2. 安装完毕，将性能收集工具的开关打开： vi /etc/default/sysstat 
   设置 ENABLED="true" 
 3. 启动这个工具来收集系统性能数据： /etc/init.d/sysstat start
+
+### Centos7.0
+
+```
+[root@localhost ~]# yum install sysstat
+[root@localhost ~]# systemctl start sysstat
+[root@localhost ~]# systemctl enable sysstat
+```
+
 
 ## sar参数说明
 - -A 汇总所有的报告 

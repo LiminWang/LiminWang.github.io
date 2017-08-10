@@ -56,6 +56,20 @@ mpstat [-P {|ALL}] [internal [count]]
  平均时间:    7   91.85    0.00    5.44    0.00    0.00    0.72    0.00    0.00    0.00    2.00
  ```
 
+```
+[root@localhost ~]# mpstat -P 0 1 100000
+Linux 3.10.0-327.13.1.el7.x86_64 (localhost.localdomain)    2017年08月10日
+_x86_64_    (8 CPU)
+16时28分22秒  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal
+%guest  %gnice   %idle
+16时28分23秒    0   38.61    0.00    2.97    0.00    0.00    0.00    0.00
+0.00    0.00   58.42
+16时28分24秒    0   49.48    0.00    2.06    0.00    0.00    0.00    0.00
+0.00    0.00   48.45
+16时28分25秒    0   51.49    0.00    3.96    0.00    0.00    0.00    0.00
+0.00    0.00   44.55
+```
+
 * iostat
 ```
 [root@localhost ~]# iostat
@@ -86,9 +100,19 @@ avg-cpu:  %user   %nice %system %iowait  %steal   %idle
 [root@localhost ~]# ps -e -o 'pid,comm,args,pcpu,rsz,vsz,stime,user,uid' |sort -rnk4 
 ```
 
-* 查看每个进程的cpu  
+* 查看每个线程的cpu  
 ```sh
 [root@localhost ~]# ps -e -L -o 'pid,comm,args,pcpu,rsz,vsz,stime,user,uid' | sort -rnk4 
+```
+
+* 查看每个线程的cpu绑定  
+```
+[root@localhost ~]# ps -e -L -o 'pid,psr,comm,args,pcpu,rsz,vsz,stime,user,uid' | sort -rnk5
+ 4952   6 myprog     /opt/hack/bin/myprog  95.5 1390068 2590392 17:45 root      0
+ 3181   2 myprog     /opt/hack/bin/myprog  93.5 1612284 2780164 17:45 root      0
+ 6987   7 sleep           sleep 60                     0.0   616 107892 17:49 root         0
+ 4952   1 myprog     /opt/hack/bin/myprog  42.8 1390068 2590392 17:45 root      0
+ 4952   0 myprog     /opt/hack/bin/myprog  10.3 1389804 2590392 17:45 root      0
 ```
 
 
