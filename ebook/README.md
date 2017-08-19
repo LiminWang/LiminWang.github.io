@@ -5,7 +5,8 @@
 
 ## Management
 - [卓有成效的管理者](management/卓有成效的管理者.pdf)
-- [无压力工作](management/getting-things-done.pdf)
+- [无压力工作(en)](management/getting_things_done_en.pdf)
+- [无压力工作(zh)](management/getting_things_done_zh.pdf)
 - [人件](management/Peopleware中文版.pdf)
 - [高效能程序员](management/高效能程序员的修炼.pdf)
 
