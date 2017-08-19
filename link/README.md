@@ -26,7 +26,7 @@
 
 ## 调试工具
 - [valgrind](http://valgrind.org) - Valgrind is an instrumentation framework for building dynamic analysis tools
-- [gdb][https://www.gnu.org/s/gdb/] - GDB是GNU开源组织发布的一个强大的UNIX下的程序调试工具
+- [gdb](https://www.gnu.org/s/gdb/) - GDB是GNU开源组织发布的一个强大的UNIX下的程序调试工具
 
 ## 系统工具
 - [sar](https://linux.die.net/man/1/sar) - Linux性能监视工具,SAR(System Activity Reporter，即系统活动报告)是Linux系统上比较牛逼的性能分析工具
@@ -47,7 +47,7 @@
 - [pandoc](pandoc.org) 一个用haskell编写的文本转换工具，小巧迅速且支持格式广泛，堪称文本转换应用的瑞士军刀。mac下也可以使用。
 - [Axure](https://www.axure.com/) - 一个专业的快速原型设计工具，产品经理必须掌握。
 - [Xmind](www.xmind.cn) - XMind思维导图和头脑风暴软件。好用免费
-- [OmniGraffle][https://www.omnigroup.com/omnigraffle] - The Omni Group制作的一款绘图软件，其只能于运行在Mac OS X 和iPad平台之上
+- [OmniGraffle](https://www.omnigroup.com/omnigraffle) - The Omni Group制作的一款绘图软件，其只能于运行在Mac OS X 和iPad平台之上
 
 ## 终端相关
 - [iterm2](https://www.iterm2.com/) - Mac 上最强大的终端iTerm2, 和oh my zsh配合非常完美
