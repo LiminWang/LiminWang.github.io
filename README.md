@@ -54,7 +54,7 @@
 
 # coding
 * [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
-* [高效编程到原则笔记ppt](coding/高效编程的原则.pdf)
+* [高效编程的原则笔记ppt](coding/高效编程的原则.pdf)
 
 # 工具
 * [unix工具包使用](http://cb.vu/unixtoolbox_zh_CN.xhtml)
