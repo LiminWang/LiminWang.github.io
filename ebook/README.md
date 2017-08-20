@@ -9,6 +9,7 @@
 - [无压力工作(zh)](management/getting_things_done_zh.pdf)
 - [人件](management/Peopleware中文版.pdf)
 - [高效能程序员](management/高效能程序员的修炼.pdf)
+- [极客与团队](ebook/management/极客与团队.pdf)
 
 ## Web
 - [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
@@ -40,6 +41,9 @@
 ## Coding
 - [code spec](https://github.com/ecomfe/spec)
 - [大家来学vim](http://www.study-area.org/tips/vim/index.html)
+
+## 调试
+- [调试九法](ebook/debug/调试九法.pdf)
 
 ## 跑步越野
 - [当我谈跑步时.我谈些什么.村上春树](run/当我谈跑步时.我谈些什么.村上春树.pdf)
