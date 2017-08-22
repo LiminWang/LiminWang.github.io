@@ -42,6 +42,9 @@
 # video
 * [视频基础知识培训](video/video_introduction_ppt.pdf)
 
+# 大数据
+* [大数据](big_data/README.md)
+
 # management
 * [管理总结](management/dev_管理的思考总结.md)
 * [管理总结PPT](management/dev_管理的思考总结.pdf)
