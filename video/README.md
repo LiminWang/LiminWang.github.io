@@ -1,11 +1,30 @@
 
 
 # 链接
+## 数学基础
+* [线性代数](http://open.163.com/special/opencourse/daishu.html)
+* [CS 229机器学习课程](http://open.163.com/special/opencourse/machinelearning.html)
+* [CS 229课堂笔记](http://cs229.stanford.edu/materials.html)
+* [Natual Deep Review](https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
+* [Stanford Machine learning](http://www.holehouse.org/mlclass/)
+* [哈佛CS109 Data Science](http://cs109.github.io/2015/)
+* [learn-statistics-for-data-science](https://elitedatascience.com/learn-statistics-for-data-science)
+* [How to Learn Math for Data Science, The Self-Starter Way](https://elitedatascience.com/learn-math-for-data-science)
+* [How to Learn Machine Learning](https://elitedatascience.com/learn-machine-learning)
+* [An Introduction to Statistical Learning](https://link.zhihu.com/?target=http%3A//www-bcf.usc.edu/%7Egareth/ISL/ISLR%2520Sixth%2520Printing.pdf)
+* [Python教程](https://github.com/savarin/pyconuk-introtutorial)
+* [6 Fun Machine Learning Projects for Beginners](https://elitedatascience.com/machine-learning-projects-for-beginners)
+
+
 ## 深度学习
 * [Deep-Learning-Papers-Reading-Roadmap](https://github.com/songrotek/Deep-Learning-Papers-Reading-Roadmap)
 * [tesorflow](https://github.com/tensorflow/tensorflow)
 * [caffe](https://github.com/BVLC/caffe)
 * [caffe install](http://caffe.berkeleyvision.org/installation.html)
+* [scikit-learn: machine learning in Python](https://github.com/scikit-learn/scikit-learn)
+* [UCI 机器学习报告, 数据集](http://archive.ics.uci.edu/ml/index.php)
+* [Data.gov, 这是美国政府开放数据集合)(https://www.data.gov/)
+
 
 ## 视频识别
 * [OpenFace: Free and open source face recognition with deep neural networks](https://cmusatyalab.github.io/openface/)

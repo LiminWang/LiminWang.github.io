@@ -67,3 +67,5 @@
 - [MacTalk-池建强的随想录](http://macshuo.com)
 - [Joel on Software](https://www.joelonsoftware.com)
 
+## Hack
+- [Awesome-Hacking](https://raw.githubusercontent.com/Hack-with-Github/Awesome-Hacking/master/README.md)
