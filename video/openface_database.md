@@ -39,7 +39,7 @@
 | IMDB-WIKI</b>     |  包含：IMDb中20k+个名人的460k+张图片 和维基百科62k+张图片, 总共： 523k+张图片 | 名人年龄、性别 | [链接](https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/) |
 | Adience | 包含2k+个人的26k+张人脸图像 | 人脸性别，人脸年龄段(8组) | [链接](http://www.openu.ac.il/home/hassner/Adience/data.html) |
 
-##人脸其它
+## 人脸其它
 
 | 数据库| 描述| 用途| 获取方法 |
 | --------------|-------------|------------|------------ |
