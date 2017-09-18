@@ -1,7 +1,7 @@
 
 
 # 链接
-## 数学基础
+## 基础
 * [线性代数](http://open.163.com/special/opencourse/daishu.html)
 * [CS 229机器学习课程](http://open.163.com/special/opencourse/machinelearning.html)
 * [CS 229课堂笔记](http://cs229.stanford.edu/materials.html)
