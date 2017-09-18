@@ -30,6 +30,7 @@
 * [安装xen](linux/CentOS6.5安装xen.md)
 * [使用expect快速访问ssh,scp](linux/ssh_scp_quick_by_expect.md)
 * [linux/c链接c++库接口.md](linux/c链接c++库接口.md)
+* [caffe install](linux/caffe_install.md)
 
 # mac
 * [mac工具](mac/mac_tools.md)
