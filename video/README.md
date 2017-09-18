@@ -24,7 +24,7 @@
 * [caffe install](http://caffe.berkeleyvision.org/installation.html)
 * [scikit-learn: machine learning in Python](https://github.com/scikit-learn/scikit-learn)
 * [UCI 机器学习报告, 数据集](http://archive.ics.uci.edu/ml/index.php)
-* [Data.gov, 这是美国政府开放数据集合)(https://www.data.gov/)
+* [Data.gov, 这是美国政府开放数据集合](https://www.data.gov/)
 
 
 ## 视频识别
