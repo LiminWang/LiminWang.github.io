@@ -14,6 +14,7 @@
 * [An Introduction to Statistical Learning](https://link.zhihu.com/?target=http%3A//www-bcf.usc.edu/%7Egareth/ISL/ISLR%2520Sixth%2520Printing.pdf)
 * [Python教程](https://github.com/savarin/pyconuk-introtutorial)
 * [6 Fun Machine Learning Projects for Beginners](https://elitedatascience.com/machine-learning-projects-for-beginners)
+* [machine-learning-for-software-engineers](https://github.com/ZuzooVn/machine-learning-for-software-engineers)
 
 
 ## 深度学习
@@ -28,6 +29,9 @@
 
 ## 视频识别
 * [OpenFace: Free and open source face recognition with deep neural networks](https://cmusatyalab.github.io/openface/)
+* [OpenFace: an open source facial behavior analysis toolkit](https://github.com/TadasBaltrusaitis/OpenFace)
+* [SeetaFace Engine](https://github.com/seetaface/SeetaFaceEngine)
+* [Dlib is a modern C++ toolkit containing machine learning algorithms and tools ](https://github.com/davisking/dlib)
 * [YOLO: Real-Time Object Detection](https://pjreddie.com/darknet/yolo/)
 * [OpenPose: A Real-Time Multi-Person Keypoint Detection And Multi-Threading C++ Library](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
 * [Self-Driving card: The Udacity open source self-driving car project](https://github.com/udacity/self-driving-car/)

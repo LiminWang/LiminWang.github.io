@@ -40,6 +40,7 @@
 * [Mac 开发配置手册](https://github.com/Aaaaaashu/Mac-dev-setup)
 
 # video
+* [video resources](video/READM.md)
 * [视频基础知识培训](video/video_introduction_ppt.pdf)
 
 # 大数据

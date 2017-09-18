@@ -141,6 +141,15 @@ $ diff -u Makefile.config.example Makefile.config
  # MATLAB directory should contain the mex binary in /bin.
 $ make -j4
 
+$ make test
+$ sudo ldconfig /usr/local/lib
+$ make runtest
+```
+
+# 编译pycaffe
+
+```sh
+make pycaffe -j4
 ```
 
 
