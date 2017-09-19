@@ -47,7 +47,10 @@
 * [基于深度学习的实时车牌识别项目](https://github.com/szad670401/HyperLPR)
 * [A machine learning model that predicts facial attractiveness from images](https://github.com/LiminWang/face-rating)
 * [Microsoft Face API: Python SDK](https://github.com/Microsoft/Cognitive-Face-Python)
-
+* [Vehicle Detection by Haar Cascades with OpenCV](https://github.com/andrewssobral/vehicle_detection_haarcascades)
+* [Vehicle Detection, Tracking and Counting](https://github.com/andrewssobral/simple_vehicle_counting)
+* [Learn how to train your own OpenCV Haar classifier](https://github.com/mrnugget/opencv-haar-classifier-training)
+* [Training Haar Cascades](https://memememememememe.me/post/training-haar-cascades/)
 
 ## NLP, AI
 * [Natural Language Toolkit](http://www.nltk.org)
