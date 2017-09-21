@@ -53,6 +53,8 @@
 * [Training Haar Cascades](https://memememememememe.me/post/training-haar-cascades/)
 * [MTCNN_face_detection_alignment](https://github.com/kpzhang93/MTCNN_face_detection_alignment)
 * [人脸识别、视频中找人的实现](http://blog.csdn.net/chengcheng1394/article/details/77817194)
+* [Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract)
+* [make a better chinese character recognition OCR than tesseract](https://github.com/neuhzhj2012/deep_ocr)
 
 
 ## NLP, AI
