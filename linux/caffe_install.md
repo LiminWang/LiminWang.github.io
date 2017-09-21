@@ -150,6 +150,16 @@ $ make runtest
 
 ```sh
 make pycaffe -j4
+make distribute
+# set PYTHONPATH (this should go in your .bashrc or whatever
+PYTHONPATH=${HOME}/caffe/python:$PYTHONPATH
+```
+
+# test caffe with yahoo open_nsfw
+
+```sh
+python ./classify_nsfw.py --model_def nsfw_model/deploy.prototxt --pretrained_model nsfw_model/resnet_50_1by2_nsfw.caffemodel ./image_0001.png
+NSFW score:   0.00374555238523
 ```
 
 
