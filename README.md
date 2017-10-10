@@ -42,7 +42,7 @@
 
 # video
 * [video resources](video/README.md)
-* [Opencv haar训练方法](opencv_haar_traning.md)
+* [Opencv haar训练方法](video/opencv_haar_traning.md)
 * [视频基础知识培训](video/video_introduction_ppt.pdf)
 
 # 大数据
