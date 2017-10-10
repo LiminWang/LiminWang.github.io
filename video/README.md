@@ -26,6 +26,7 @@
 * [UCI 机器学习报告, 数据集](http://archive.ics.uci.edu/ml/index.php)
 * [Data.gov, 这是美国政府开放数据集合](https://www.data.gov/)
 * [Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit](https://github.com/Microsoft/CNTK)
+* [A Practical Introduction to Deep Learning with Caffe and Python](http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe/)
 
 
 ## 视频识别
