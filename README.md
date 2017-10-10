@@ -39,6 +39,7 @@
 * [Mac sz rz上传下载](mac/iterm2_支持远程服务器szrz上传下载功能.md)
 * [markdown语法说明](mac/markdown_syntax.md)
 * [Mac 开发配置手册](https://github.com/Aaaaaashu/Mac-dev-setup)
+* [mac下编译cmake依赖qt库出错解决方案](mac/mac_cmake_qt_error.md)
 
 # video
 * [video resources](video/README.md)
