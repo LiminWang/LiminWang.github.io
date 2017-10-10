@@ -2,7 +2,8 @@
 
 # 测试训练素材(cars)
 
-http://cogcomp.cs.illinois.edu/Data/Car/
+[车素材](http://cogcomp.cs.illinois.edu/Data/Car/)
+[人脸识别数据库](http://www.face-rec.org/databases/)
 
 
 # 训练方法
