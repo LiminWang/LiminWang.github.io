@@ -30,6 +30,7 @@
 
 
 ## 视频识别
+* [LFW人脸测试数据库](http://vis-www.cs.umass.edu/lfw)
 * [Face Resource](https://github.com/betars/Face-Resources)
 * [OpenFace: Free and open source face recognition with deep neural networks](https://cmusatyalab.github.io/openface/)
 * [OpenFace: an open source facial behavior analysis toolkit](https://github.com/TadasBaltrusaitis/OpenFace)
@@ -43,9 +44,7 @@
 * [Self-Driving card: The Udacity open source self-driving car project](https://github.com/udacity/self-driving-car/)
 * [open nsfw](https://github.com/yahoo/open_nsfw/tree/master/nsfw_model)
 * [Image Synthesis from Yahoo's open_nsfw](https://open_nsfw.gitlab.io)
-* [车牌识别库](https://github.com/openalpr/openalpr.git)
-* [多标签分类,端到端的中文车牌识别](https://github.com/szad670401/end-to-end-for-chinese-plate-recognition)
-* [一个简单的中文车牌识别Python实现](https://github.com/szad670401/HyperLPR_python)
+* [车牌识别库](https://github.com/openalpr/openalpr.git) * [多标签分类,端到端的中文车牌识别](https://github.com/szad670401/end-to-end-for-chinese-plate-recognition) * [一个简单的中文车牌识别Python实现](https://github.com/szad670401/HyperLPR_python)
 * [基于深度学习的实时车牌识别项目](https://github.com/szad670401/HyperLPR)
 * [A machine learning model that predicts facial attractiveness from images](https://github.com/LiminWang/face-rating)
 * [Microsoft Face API: Python SDK](https://github.com/Microsoft/Cognitive-Face-Python)
