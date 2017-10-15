@@ -64,6 +64,9 @@
 * [SpaCy: Industrial-Strength Natural Language Processing in Python](https://spacy.io)
 
 ## 音频
+* [echoprint音频指纹](https://github.com/spotify/echoprint-codegen)
+* [Echoprint - 开源的声纹识别](http://www.codedata.cn/hacknews/148429252662110798)
+* [audio分析工具](https://github.com/tyiannak/pyAudioAnalysis)
 * [librosa: Python library for audio and music analysis](https://github.com/oencoding/librosa)
 * [Magenta: Music and Art Generation with Machine Intelligence](https://github.com/tensorflow/magenta)
 
