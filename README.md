@@ -31,6 +31,7 @@
 * [使用expect快速访问ssh,scp](linux/ssh_scp_quick_by_expect.md)
 * [linux/c链接c++库接口.md](linux/c链接c++库接口.md)
 * [caffe install](linux/caffe_install.md)
+* [多播流应用层接收不到的问题](linux/linux_multicast_issue.md)
 
 # mac
 * [mac工具](mac/mac_tools.md)
