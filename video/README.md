@@ -70,6 +70,3 @@
 * [librosa: Python library for audio and music analysis](https://github.com/oencoding/librosa)
 * [Magenta: Music and Art Generation with Machine Intelligence](https://github.com/tensorflow/magenta)
 
-
-
-# Opencv_test_code
