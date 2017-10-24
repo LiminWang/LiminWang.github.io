@@ -8,6 +8,7 @@
 * [Natual Deep Review](https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
 * [Stanford Machine learning](http://www.holehouse.org/mlclass/)
 * [哈佛CS109 Data Science](http://cs109.github.io/2015/)
+* [李宏毅深度学习课程](http://speech.ee.ntu.edu.tw/%7Etlkagk/courses.html)
 * [learn-statistics-for-data-science](https://elitedatascience.com/learn-statistics-for-data-science)
 * [How to Learn Math for Data Science, The Self-Starter Way](https://elitedatascience.com/learn-math-for-data-science)
 * [How to Learn Machine Learning](https://elitedatascience.com/learn-machine-learning)

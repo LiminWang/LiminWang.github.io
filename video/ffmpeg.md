@@ -79,6 +79,14 @@ ffmpeg -i input.mp4 -vf vidstabtransform=smoothing=30:input="transforms.trf"
 output.mp4
 ```
 
+### 输入测试源生成
+
+```
+$ ffmpeg -y -f lavfi -i testsrc -vframes 1 testsrc.png
+$ ffmpeg -y -f lavfi -i smptehdbars -vframes 1 smptehdbars.png
+$ ffmpeg -f lavfi -i testsrc=duration=60:size=1280x720:rate=25 output.mp4
+$ ffmpeg -f lavfi -i "smptebars=duration=5:size=1280x720:rate=30" output.mp4
+```
 
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
