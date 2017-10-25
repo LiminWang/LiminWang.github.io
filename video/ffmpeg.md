@@ -36,6 +36,24 @@ $ ffmpeg -i side1.mp4 -i side2.mp4 -filter_complex "[0:v]setpts=PTS-STARTPTS,
 pad=iw*2:ih[bg]; [1:v]setpts=PTS-STARTPTS[fg]; [bg][fg]overlay=w"
 side1_by_side2.mp4
 ```
+### slideshow
+```
+$ ffmpeg -framerate 10 -f image2 -i image%d.jpg video.mpg
+$ ffmpeg -start_number 126 -i img%03d.png -pix_fmt yuv420p out.mp4
+$ cat *.png | ffmpeg -f image2pipe -i - output.mkv
+$ ffmpeg -loop 1 -i img.jpg -c:v libx264 -t 30 -pix_fmt yuv420p out.mp4
+```
+
+### 调整视频速度
+```
+$ ffmpeg -i input.mkv -filter:v "setpts=0.5*PTS" output.mkv
+$ ffmpeg -i input.mkv -filter:v "setpts=2.0*PTS" output.mkv
+```
+
+### 视频加入音频
+```
+$ ffmpeg -i audio.wav -i video_wo_audio.avi video_w_audio.mpg
+```
 
 ### 马赛克
 ```sh
@@ -87,6 +105,25 @@ $ ffmpeg -y -f lavfi -i smptehdbars -vframes 1 smptehdbars.png
 $ ffmpeg -f lavfi -i testsrc=duration=60:size=1280x720:rate=25 output.mp4
 $ ffmpeg -f lavfi -i "smptebars=duration=5:size=1280x720:rate=30" output.mp4
 ```
+
+### 分析Motion Vector
+```sh
+$ ffplay -flags2 +export_mvs input.mp4 -vf codecview=mv=pf+bf+bb
+$ ffmpeg -flags2 +export_mvs -i input.mp4 -vf codecview=mv=pf+bf+bb output.mp4
+```
+
+### 分析QP量化值
+```
+$ ffplay -flags2 +export_mvs input.mp4 -vf codecview=mv=pf+bf+bb
+$ ffmpeg -flags2 +export_mvs -i input.mp4 -vf codecview=mv=pf+bf+bb output.mp4
+```
+
+### 分析宏块类型
+```
+$ ffplay -debug vis_mb_type input.mp4
+$ ffmpeg -debug vis_mb_type -i input.mp4 output.mp4
+```
+
 
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
