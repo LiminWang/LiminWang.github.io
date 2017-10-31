@@ -61,6 +61,12 @@ $ ffmpeg -i input.mp4 -vf select='gt(scene\,0.4)',scale=160:120,tile -frames:v 1
 $ $ ffmpeg -i input.mp4 -frames 1 -vf "select=not(mod(n\,500)),scale=160:120,tile=4x3" tile.png
 ```
 
+### 左到右叠加效果
+
+```sh
+$ ffmpeg -i input1.mp4 -i input2.jpg -filter_complex "[1] scale=100:100 [tmp];[0][tmp] overlay=x='if(gte(t,2),t*100, 10)':y=30" output.mp4
+```
+
 ### 声音波形图效果
 ```sh
 $ ffmpeg -i input.ts -filter_complex "[0:a]showvolume=f=1:b=4:w=720:h=68,format=yuv420p[vid]" -map "[vid]" -map 0:a -c:v libx264 -preset fast -crf 18 -codec:a copy -strict -2 -b:a 192k audio.mp4 $ ffmpeg -i ~/Downloads/test_norm.ts -filter_complex "[0:a]ahistogram,format=yuv420p[vid]" -map "[vid]" -map 0:a -c:v libx264 -preset fast -crf 18 -codec:a copy -strict -2 -b:a 192k audio.mp4
