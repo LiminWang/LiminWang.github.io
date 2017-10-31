@@ -44,6 +44,45 @@ $ cat *.png | ffmpeg -f image2pipe -i - output.mkv
 $ ffmpeg -loop 1 -i img.jpg -c:v libx264 -t 30 -pix_fmt yuv420p out.mp4
 ```
 
+### 叠加马赛克
+
+```
+$ ffmpeg -i s-0-h-0.mp4 -i s-1-h-0.mp4 -i s-2-h-0.mp4 -i s-3-h-0.mp4 -i s-4-h-0.mp4 -filter_complex "
+        nullsrc=size=4240x478 [base];
+        [0:v] setpts=PTS-STARTPTS, scale=848x478 [vid1];
+        [1:v] setpts=PTS-STARTPTS, scale=848x478 [vid2];
+        [2:v] setpts=PTS-STARTPTS, scale=848x478 [vid3];
+        [3:v] setpts=PTS-STARTPTS, scale=848x478 [vid4];
+        [4:v] setpts=PTS-STARTPTS, scale=848x478 [vid5];
+        [base][vid1] overlay=shortest=1 [tmp1];
+        [tmp1][vid2] overlay=shortest=1:x=848 [tmp2];
+        [tmp2][vid3] overlay=shortest=1:x=1696 [tmp3];
+        [tmp3][vid4] overlay=shortest=1:x=2544 [tmp4];
+        [tmp4][vid5] overlay=shortest=1:x=3392
+    "
+   -c:v libx264 output.mkv
+
+$ ffmpeg -i udp://224.0.1.14:5000?fifo_size=100000 -i udp://224.0.1.14:5000?fifo_size=100000 
+-i udp://224.0.1.14:5000?fifo_size=100000 -i udp://224.0.1.14:5000?fifo_size=100000 
+-filter_complex
+"nullsrc=size=1920x1080 [base]; [0:v] setpts=PTS-STARTPTS, scale=960x540
+[upperleft]; [1:v] setpts=PTS-STARTPTS, scale=960x540 [upperright]; [2:v]
+setpts=PTS-STARTPTS, scale=960x540 [lowerleft]; [3:v] setpts=PTS-STARTPTS,
+scale=960x540 [lowerright]; [base][upperleft] overlay=shortest=1 [tmp1];
+[tmp1][upperright] overlay=shortest=1:x=960 [tmp2]; [tmp2][lowerleft]
+overlay=shortest=1:y=540 [tmp3]; [tmp3][lowerright]
+overlay=shortest=1:x=960:y=540" -c:v libx264 -preset ultrafast -f mpegts
+udp://224.0.1.15:5000
+```
+
+### OCR text
+* build ffmpeg --with-tesseract
+
+```sh
+$ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=img.png,ocr" 
+4 ffprobe -f lavfi -i "movie=input.mov,ocr" -show_entries frame=pkt_dts_time:frame_tags=lavfi.ocr.text -of json
+```
+
 ### 调整视频速度
 ```
 $ ffmpeg -i input.mkv -filter:v "setpts=0.5*PTS" output.mkv
