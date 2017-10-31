@@ -61,6 +61,15 @@ $ ffmpeg -i input.mp4 -vf select='gt(scene\,0.4)',scale=160:120,tile -frames:v 1
 $ $ ffmpeg -i input.mp4 -frames 1 -vf "select=not(mod(n\,500)),scale=160:120,tile=4x3" tile.png
 ```
 
+### 声音波形图效果
+```sh
+$ ffmpeg -i input.ts -filter_complex "[0:a]showvolume=f=1:b=4:w=720:h=68,format=yuv420p[vid]" -map "[vid]" -map 0:a -c:v libx264 -preset fast -crf 18 -codec:a copy -strict -2 -b:a 192k audio.mp4 $ ffmpeg -i ~/Downloads/test_norm.ts -filter_complex "[0:a]ahistogram,format=yuv420p[vid]" -map "[vid]" -map 0:a -c:v libx264 -preset fast -crf 18 -codec:a copy -strict -2 -b:a 192k audio.mp4
+$ ffmpeg -i input.mp4 -filter_complex
+"[0:a]showfreqs=s=640x518:mode=line:fscale=log,pad=1280:720[vs];
+[0:a]showspectrum=mode=separate: color=intensity:scale=cbrt:s=640x518[ss];[0:a]showwaves=s=1280x202:mode=line[sw];[vs][ss]overlay=w[bg];[bg][sw]overlay=0:H-h[out]"
+-map "[out]" -map 0:a -c:v libx264 -preset fast -crf 18 -c:a copy test.mp4
+```
+
 ### 视频稳定(类似相机硬件防抖动）
 * build
 1. ffmpeg编译需要打开下面选项:
