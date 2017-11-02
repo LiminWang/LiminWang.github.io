@@ -83,6 +83,12 @@ $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=img.png,ocr
 4 ffprobe -f lavfi -i "movie=input.mov,ocr" -show_entries frame=pkt_dts_time:frame_tags=lavfi.ocr.text -of json
 ```
 
+###  psnr和ssim质量比较
+
+```sh
+ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y -f rawvideo /dev/null
+```
+
 ### 调整视频速度
 ```
 $ ffmpeg -i input.mkv -filter:v "setpts=0.5*PTS" output.mkv
