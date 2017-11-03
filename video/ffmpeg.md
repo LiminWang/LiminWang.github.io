@@ -83,6 +83,14 @@ $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=img.png,ocr
 4 ffprobe -f lavfi -i "movie=input.mov,ocr" -show_entries frame=pkt_dts_time:frame_tags=lavfi.ocr.text -of json
 ```
 
+### 区域模糊
+
+```sh
+$ ffmpeg -i input.ts -filter_complex "[0:v]crop=200:200:60:30,boxblur=2[fg];[0:v][fg]overlay=60:30[v]" -map "[v]"
+    -map 0:a -c:v libx264 -c:a copy blur.ts
+$ ffmpeg -i input.ts vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.ts
+``
+
 ###  psnr和ssim质量比较
 
 ```sh
