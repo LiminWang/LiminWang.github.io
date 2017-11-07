@@ -94,7 +94,15 @@ $ ffmpeg -i input.ts vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.t
 ###  psnr和ssim质量比较
 
 ```sh
-ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y -f rawvideo /dev/null
+$ ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y -f rawvideo /dev/null
+
+```
+
+### 视频信号分析
+```sh
+ffprobe -f lavfi -i
+"movie=mission.mov,signalstats=stat=tout+vrep+brng,cropdetect=reset=1,split[a][b];[a]field=top[a1];[b]field=bottom[b1],[a1][b1]psnr"
+-show_frames -show_versions -of xml=x=1:q=1 -noprivate > test.xml
 ```
 
 ### 调整视频速度
@@ -191,6 +199,13 @@ $ ffmpeg -flags2 +export_mvs -i input.mp4 -vf codecview=mv=pf+bf+bb output.mp4
 $ ffplay -debug vis_mb_type input.mp4
 $ ffmpeg -debug vis_mb_type -i input.mp4 output.mp4
 ```
+
+### xavc mxf输出
+
+3rdparty_img/ffmpeg/bin/ffmpeg -loglevel debug  -i
+/home/lmwang/movie/TheGreatWall.mpg -s 3840x2160 -r 25 -c:v libx264 -pix_fmt
+yuv422p10le -b:v 20M -bufsize 20M -level 5.2 -g 0 -keyint_min 0 -x264-params
+nal-hrd=cbr:avcintra-class=200:avcintra-flavour=sony -c:a pcm_s24le test.mxf
 
 
 # FFmpeg resource
