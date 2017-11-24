@@ -25,6 +25,8 @@
 * [caffe install](http://caffe.berkeleyvision.org/installation.html)
 * [scikit-learn: machine learning in Python](https://github.com/scikit-learn/scikit-learn)
 * [UCI 机器学习报告, 数据集](http://archive.ics.uci.edu/ml/index.php)
+* [Face Detection Data Set](http://vis-www.cs.umass.edu/fddb/)
+* [Labeled Faces in the Wild Home](http://vis-www.cs.umass.edu/lfw/)
 * [Data.gov, 这是美国政府开放数据集合](https://www.data.gov/)
 * [Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit](https://github.com/Microsoft/CNTK)
 * [A Practical Introduction to Deep Learning with Caffe and Python](http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe/)
