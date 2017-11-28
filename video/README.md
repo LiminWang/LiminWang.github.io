@@ -33,7 +33,6 @@
 
 
 ## 视频识别
-* [LFW人脸测试数据库](http://vis-www.cs.umass.edu/lfw)
 * [Face Resource](https://github.com/betars/Face-Resources)
 * [OpenFace: Free and open source face recognition with deep neural networks](https://cmusatyalab.github.io/openface/)
 * [OpenFace: an open source facial behavior analysis toolkit](https://github.com/TadasBaltrusaitis/OpenFace)
@@ -74,4 +73,13 @@
 * [Magenta: Music and Art Generation with Machine Intelligence](https://github.com/tensorflow/magenta)
 * [alize speaker recognition](http://alize.univ-avignon.fr)
 * [kaldi 语音识别工具库](https://github.com/kaldi-asr/kaldi)
+
+
+## 人脸数据库集合
+* [LFW人脸测试数据库](http://vis-www.cs.umass.edu/lfw)
+* [FDDB](http://vis-www.cs.umass.edu/fddb/)
+* [YouTube Faces DB](http://www.cs.tau.ac.il/~wolf/ytfaces/)
+* [FaceScrub](http://vintage.winklerbros.net/facescrub.html)
+* [MegaFace and MF2: Million-Scale Face Recognition](http://megaface.cs.washington.edu)
+* [IMDB-WIKI – 500k+ face images](https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/)
 
