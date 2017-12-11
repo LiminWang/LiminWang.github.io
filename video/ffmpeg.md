@@ -5,6 +5,8 @@
 
 ```
 $ ffprobe -i input.mp4 -v quiet -of json -show_format -show_streams
+$ ffprobe -select_streams v -show_frames input.ts -of json
+$ ffprobe -v quiet -select_streams v -show_frames -show_entries frame=key_frame,pkt_pts_time,pict_type  input.ts -of json
 ```
 
 ## 截图
