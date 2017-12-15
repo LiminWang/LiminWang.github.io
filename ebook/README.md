@@ -12,7 +12,9 @@
 - [极客与团队](ebook/management/极客与团队.pdf)
 - [企业应用架构模式](ebook/design/企业应用架构模式.pdf)
 - [程序员的职业素养](ebook/management/程序员的职业素养.pdf)
-- (金字塔原理](management/金字塔原理.pdf)
+- [金字塔原理](management/金字塔原理.pdf)
+- [学会提问](management/学会提问.df)
+- [每周工作4小时](management/每周工作4小时.pdf)
 
 ## Web
 - [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
