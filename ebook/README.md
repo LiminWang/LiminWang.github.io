@@ -15,6 +15,7 @@
 - [金字塔原理](management/金字塔原理.pdf)
 - [学会提问](management/学会提问.df)
 - [每周工作4小时](management/每周工作4小时.pdf)
+- [思考的技术](management/思考的技术.pdf)
 
 ## Web
 - [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
