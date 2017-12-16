@@ -59,6 +59,7 @@
 * [Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract)
 * [make a better chinese character recognition OCR than tesseract](https://github.com/neuhzhj2012/deep_ocr)
 * [stasm face landmark detect](http://www.milbo.users.sonic.net/stasm)
+* [Real-time FaceSwap application](https://github.com/hrastnik/FaceSwap)
 
 
 ## NLP, AI
