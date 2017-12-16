@@ -58,6 +58,7 @@
 * [人脸识别、视频中找人的实现](http://blog.csdn.net/chengcheng1394/article/details/77817194)
 * [Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract)
 * [make a better chinese character recognition OCR than tesseract](https://github.com/neuhzhj2012/deep_ocr)
+* [stasm face landmark detect](http://www.milbo.users.sonic.net/stasm)
 
 
 ## NLP, AI
