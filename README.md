@@ -32,6 +32,7 @@
 * [linux/c链接c++库接口.md](linux/c链接c++库接口.md)
 * [caffe install](linux/caffe_install.md)
 * [多播流应用层接收不到的问题](linux/linux_multicast_issue.md)
+* [performance profiling by callgrind](linux/profiling_by_callgrind.md)
 
 # mac
 * [mac工具](mac/mac_tools.md)
