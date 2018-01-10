@@ -98,6 +98,8 @@ $ ffmpeg -i input.ts vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.t
 
 ```sh
 $ ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y -f rawvideo /dev/null
+$ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "ssim=stats_file=ssim_stats.log" -f null -
+$ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "psnr=stats_file=psnr_stats.log" -f null -
 
 ```
 
@@ -205,10 +207,18 @@ $ ffmpeg -debug vis_mb_type -i input.mp4 output.mp4
 
 ### xavc mxf输出
 
-3rdparty_img/ffmpeg/bin/ffmpeg -loglevel debug  -i
-/home/lmwang/movie/TheGreatWall.mpg -s 3840x2160 -r 25 -c:v libx264 -pix_fmt
-yuv422p10le -b:v 20M -bufsize 20M -level 5.2 -g 0 -keyint_min 0 -x264-params
-nal-hrd=cbr:avcintra-class=200:avcintra-flavour=sony -c:a pcm_s24le test.mxf
+./ffmpeg -hwaccel qsv -hwaccel_device /dev/dri/renderD128 -hwaccel_output_format
+qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugins
+6fadc791a0c2eb479ab6dcd5ea9da347 output.mp4
+
+./ffmpeg -hwaccel qsv -hwaccel_device /dev/dri/renderD128 -hwaccel_output_format
+qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
+-init_hw_device qsv:hw -preset fast -profile:v main -an output.mp4
+
+./ffmpeg -codec:v h264_qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 3M -maxrate
+3M -look_ahead 0 -load_plugin hevc_hw -init_hw_device qsv:hw -f mpegts /dev/null
+
+./ffmpeg -load_plugin hevc_hw -codec:v hevc_qsv -i UHD_Soccer.ts -f null -
 
 
 # FFmpeg resource
