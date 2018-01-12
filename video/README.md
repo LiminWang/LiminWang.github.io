@@ -61,6 +61,9 @@
 * [stasm face landmark detect](http://www.milbo.users.sonic.net/stasm)
 * [Real-time FaceSwap application](https://github.com/hrastnik/FaceSwap)
 
+## 超分辨率(SR)
+* [SR Benchmark link](SR_benchmark.md)
+* [Single Image Super-Resolution from Transformed Self-Exemplars](https://sites.google.com/site/jbhuang0604/publications/struct_sr)
 
 ## NLP, AI
 * [Natural Language Toolkit](http://www.nltk.org)
