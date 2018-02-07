@@ -30,6 +30,7 @@
 * [Data.gov, 这是美国政府开放数据集合](https://www.data.gov/)
 * [Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit](https://github.com/Microsoft/CNTK)
 * [A Practical Introduction to Deep Learning with Caffe and Python](http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe/)
+* [deep-photo-styletransfer](https://github.com/luanfujun/deep-photo-styletransfer)
 
 
 ## 视频识别
@@ -61,9 +62,17 @@
 * [stasm face landmark detect](http://www.milbo.users.sonic.net/stasm)
 * [Real-time FaceSwap application](https://github.com/hrastnik/FaceSwap)
 
+
 ## 超分辨率(SR)
 * [SR Benchmark link](SR_benchmark.md)
 * [Single Image Super-Resolution from Transformed Self-Exemplars](https://sites.google.com/site/jbhuang0604/publications/struct_sr)
+* [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](https://arxiv.org/abs/1609.04802v4)
+* [The classic about Generative Adversarial Networks(GAN)](https://github.com/zhangqianhui/AdversarialNetsPapers)
+* [A+: Adjusted Anchored Neighborhood Regression for Fast Super-Resolution](http://www.vision.ee.ethz.ch/%7Etimofter/ACCV2014_ID820_SUPPLEMENTARY/)
+* [Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network](https://arxiv.org/abs/1609.05158)
+* [RAISR: Rapid and Accurate Image Super Resolution](https://arxiv.org/abs/1606.01299) 
+
+
 
 ## NLP, AI
 * [Natural Language Toolkit](http://www.nltk.org)
