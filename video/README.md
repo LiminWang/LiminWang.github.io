@@ -31,6 +31,7 @@
 * [Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit](https://github.com/Microsoft/CNTK)
 * [A Practical Introduction to Deep Learning with Caffe and Python](http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe/)
 * [deep-photo-styletransfer](https://github.com/luanfujun/deep-photo-styletransfer)
+* [Remastering Classic Films in Tensorflow with Pix2Pix](https://hackernoon.com/remastering-classic-films-in-tensorflow-with-pix2pix-f4d551fa0503)
 
 
 ## 视频识别
@@ -71,6 +72,7 @@
 * [A+: Adjusted Anchored Neighborhood Regression for Fast Super-Resolution](http://www.vision.ee.ethz.ch/%7Etimofter/ACCV2014_ID820_SUPPLEMENTARY/)
 * [Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network](https://arxiv.org/abs/1609.05158)
 * [RAISR: Rapid and Accurate Image Super Resolution](https://arxiv.org/abs/1606.01299) 
+* [Image Super-Resolution for Anime-Style Art](https://github.com/nagadomi/waifu2x)
 
 
 
@@ -87,7 +89,9 @@
 * [Magenta: Music and Art Generation with Machine Intelligence](https://github.com/tensorflow/magenta)
 * [alize speaker recognition](http://alize.univ-avignon.fr)
 * [kaldi 语音识别工具库](https://github.com/kaldi-asr/kaldi)
-
+* [Around the World in 60 Days: Getting Deep Speech to Work in Mandarin](http://svail.github.io/mandarin/) 
+* [A TensorFlow implementation of Baidu's DeepSpeech architecture](https://github.com/mozilla/DeepSpeech)
+* [Deep Speech 2: End-to-End Speech Recognition in English and Mandarin](https://arxiv.org/abs/1512.02595)
 
 ## 人脸数据库集合
 * [LFW人脸测试数据库](http://vis-www.cs.umass.edu/lfw)

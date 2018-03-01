@@ -5,7 +5,7 @@
 
 ```
 $ ffprobe -i input.mp4 -v quiet -of json -show_format -show_streams
-$ ffprobe -select_streams v -show_frames input.ts -of json
+$ ffprobe -v quiet -select_streams v -show_frames input.ts -of json
 $ ffprobe -v quiet -select_streams v -show_frames -show_entries frame=key_frame,pkt_pts_time,pict_type  input.ts -of json
 $ ffprobe -v quiet -show_entries stream=codec_type,start_time,duration input.mp4 -of json
 ```
@@ -77,6 +77,18 @@ overlay=shortest=1:y=540 [tmp3]; [tmp3][lowerright]
 overlay=shortest=1:x=960:y=540" -c:v libx264 -preset ultrafast -f mpegts
 udp://224.0.1.15:5000
 ```
+
+```
+ffmpeg -i ad_640_360_sr.ts -i ad_640_360_lanczos.ts -filter_complex
+"[0:v]setpts=PTS-STARTPTS, pad=iw:ih[bg];[1:v]setpts=PTS-STARTPTS[fg];
+[bg][fg]overlay=w/2" -vcodec h264 -b:v 25000k ad_merge.ts
+
+ffmpeg -i ad_640_360_sr.ts -i ad_640_360_lanczos.ts -filter_complex
+"[0:v]setpts=PTS-STARTPTS,
+crop=iw:ih:iw/2:ih,pad=iw:ih[bg];[1:v]setpts=PTS-STARTPTS, crop=iw/2:ih:0:0[fg];
+[bg][fg]overlay=0" -vcodec h264 -b:v 25000k ad_merge.ts
+```
+
 
 ### OCR text
 * build ffmpeg --with-tesseract
