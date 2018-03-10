@@ -165,6 +165,12 @@ No MPI support will be enabled for TensorFlow.
 
 
 $ bazel build --config=opt --config=cuda --local_resources 2048,.5,1.0 //tensorflow:libtensorflow_cc.so
+
+编译完成后，在bazel-bin/tensorflow中会生成两个我们需要的库文件：
+libtensorflow_cc.so 和 libtensorflow_framework.so。
+
+在后面我们用C++调用tensorflow时需要链接这两个库文件。
+
 ```
 
 # 参考链接
