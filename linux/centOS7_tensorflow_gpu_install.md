@@ -171,7 +171,16 @@ libtensorflow_cc.so 和 libtensorflow_framework.so。
 
 在后面我们用C++调用tensorflow时需要链接这两个库文件。
 
+编译python安装包
+$ bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+ 
+$ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+//This created .whl file in /tmp/tensorflow_pkg
+   
+$ sudo pip install /tmp/tensorflow_pkg/tensorflow-*.whl
+
 ```
+
 
 # 参考链接
 * [nvidia CUDA Installation guide](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
