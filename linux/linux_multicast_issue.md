@@ -53,3 +53,35 @@ $ cat /proc/sys/net/ipv4/conf/default/rp_filter
 $ echo "0" >/proc/sys/net/ipv4/conf/default/rp_filter
 ```
 
+3. 如何加入多播地址组
+在使用tcpdump抓取多播流，会遇到需要先用别的工具收录一下这个多播流，tcpdump才能抓
+到网络包，解决的办法：
+3.1 使用netstat查看是否加入多播组
+```
+[lmwang@b67 catip]$ netstat -gn
+IPv6/IPv4 Group Memberships
+Interface       RefCnt Group
+--------------- ------ ---------------------
+lo              1      224.0.0.1
+enp3s0          1      224.0.0.1
+lo              1      ff02::1
+lo              1      ff01::1
+enp3s0          1      ff02::1
+enp3s0          1      ff01::1
+```
+3.2 可以使用ip maddr加入多播组, 但只支持link layer address
+```
+$ ip maddr [ add | del ] MULTIADDR dev STRING 
+$ ip maddr add 224.0.0.251 dev enp3s0
+```
+
+3.3 可以使用socat(netcat++), 支持L2, L3
+```
+$ yum install socat
+$ socat STDIO  UDP4-DATAGRAM:239.101.1.68:8889,ip-add-membership=239.0.1.68:10.100.201.1
+```
+
+
+
+
+
