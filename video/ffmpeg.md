@@ -30,6 +30,15 @@ $ ffmpeg -i input.mp4 -f image2 -vf fps=fps=1/10 thumbnail_%3d.png
 ### i-frame截图
 ```sh
 $ ffmpeg -i input.mp4 -f image2 -vf "select='eq(pict_type,PICT_TYPE_I)'" -vsync vfr thumbnail_%03d.png
+$ ffmpeg  -skip_frame nokey  -i input.ts -vf "select='eq(pict_type,PICT_TYPE_I)'"  -vsync vfr thumbnail_%03d.png
+$ ffmpeg  -discard nokey  -i input.ts -vf "select='eq(pict_type,PICT_TYPE_I)'" -vsync vfr thumbnail_%03d.png
+# keyframes with a radius of 3 seconds of times t = 14s, 107s and 2113s will be # selected
+$ ffmpeg -discard nokey -i video.mp4 -q:v 2 -vf select="eq(pict_type\,PICT_TYPE_I)*(lt(abs(t-14),3)+lt(abs(t-107),3)+lt(abs(t-2113),3))" -vsync 0 frame%03d.jpg
+```
+
+### 获取关键帧基本信息
+```sh
+$ ffmpeg -skip_frame nokey -i input.mp4 -vf showinfo -vsync 0 -f null -
 ```
 
 ### side by side视频比较
@@ -103,7 +112,7 @@ $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=img.png,ocr
 ```sh
 $ ffmpeg -i input.ts -filter_complex "[0:v]crop=200:200:60:30,boxblur=2[fg];[0:v][fg]overlay=60:30[v]" -map "[v]"
     -map 0:a -c:v libx264 -c:a copy blur.ts
-$ ffmpeg -i input.ts vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.ts
+$ ffmpeg -i input.ts -vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.ts
 ``
 
 ###  psnr和ssim质量比较
@@ -113,6 +122,20 @@ $ ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y
 $ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "ssim=stats_file=ssim_stats.log" -f null -
 $ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "psnr=stats_file=psnr_stats.log" -f null -
 
+```
+
+
+### 输出YUV数据
+
+>> 10bit YUV
+
+```sh
+./ffmpeg -i UHD_Soccer.ts -an   -c:v rawvideo -pix_fmt yuv420p10le UHD_Soccer_10bit.yuv
+```
+
+>> 8bit YUV
+```sh
+./ffmpeg -i UHD_Soccer.ts -an   -c:v rawvideo -pix_fmt yuv420 UHD_Soccer_8bit.yuv
 ```
 
 ### 视频信号分析
