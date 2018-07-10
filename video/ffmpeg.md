@@ -177,6 +177,12 @@ $ ffmpeg -i input.mp4 -filter_complex
 -map "[out]" -map 0:a -c:v libx264 -preset fast -crf 18 -c:a copy test.mp4
 ```
 
+### 查看编码参数
+
+```
+$ ffmpeg -h encoder=libx265
+```
+
 ### 视频稳定(类似相机硬件防抖动）
 * build
 1. ffmpeg编译需要打开下面选项:
