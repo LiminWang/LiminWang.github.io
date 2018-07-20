@@ -1,9 +1,15 @@
 # Ebook(仅供自我学习参考使用）
 
+## 基础
+
+>> 豆瓣评分很高
+- [什么是数学](https://book.douban.com/subject/1320282/) 
+
 ## Design
 - [software architecture patterns](design/software-architecture-patterns.pdf)
 
 ## Management
+- [Getting Things Done](https://book.douban.com/subject/1316569/) 
 - [卓有成效的管理者](management/卓有成效的管理者.pdf)
 - [无压力工作(en)](management/getting_things_done_en.pdf)
 - [无压力工作(zh)](management/getting_things_done_zh.pdf)
@@ -60,3 +66,6 @@
 - [程序员自我修养](other/One_Programmer_Prepare.pdf)
 - [Free Books for Programming](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md)
 
+## 文学
+- [杀死一只知更鸟英文版](novel/To_Kill_a_Mockingbird_by_Haper_Lee.pdf)
+- [杀死一只知更鸟中文版](novel/novel/杀死一只知更鸟_高红梅译.pdf)
