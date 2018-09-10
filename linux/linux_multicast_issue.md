@@ -81,7 +81,10 @@ $ yum install socat
 $ socat STDIO  UDP4-DATAGRAM:239.101.1.68:8889,ip-add-membership=239.0.1.68:10.100.201.1
 ```
 
-
+3.4 如果保存多播流
+```
+$ socat -u UDP4-RECV:<PORT>,ip-add-membership=<MULTICAST_IP>:<NIC_IP>,reuseaddr CREATE:dump_name-`date +'%F-%H.%M'`.ts
+```
 
 
 

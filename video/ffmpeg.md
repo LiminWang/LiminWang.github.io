@@ -36,6 +36,14 @@ $ ffmpeg  -discard nokey  -i input.ts -vf "select='eq(pict_type,PICT_TYPE_I)'" -
 $ ffmpeg -discard nokey -i video.mp4 -q:v 2 -vf select="eq(pict_type\,PICT_TYPE_I)*(lt(abs(t-14),3)+lt(abs(t-107),3)+lt(abs(t-2113),3))" -vsync 0 frame%03d.jpg
 ```
 
+### 快速截图
+```sh
+$ ffmpeg -i input.ts -movflags faststart -c:v copy -c:a copy -f mp4 -y mux.mp4
+$ ffmpeg -discard nokey -i mux.mp4 -c copy -vsync vfr discard.mp4
+$ ffmpeg -skip_frame nokey -i discard.mp4 -vf "scale=w=240:h=180:flags=fast_bilinear" -vsync vfr frame%04d.png
+```
+
+
 ### 获取关键帧基本信息
 ```sh
 $ ffmpeg -skip_frame nokey -i input.mp4 -vf showinfo -vsync 0 -f null -
@@ -262,6 +270,10 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 ./ffmpeg -load_plugin hevc_hw -codec:v hevc_qsv -i UHD_Soccer.ts -f null -
 
 
+ /opt/bravo/bts/transcoder/objs/ffmpeg -probesize 10000000 -analyzeduration 10000000 -y -hwaccel cuvid -c:v h264_cuvid -gpu 1 -i /root/4K-8m-60.mp4 -filter_complex "scale_npp=w=3840:h=2160:format=yuv420p,hwdownload,format=yuv420p" -c:v hevc_nvenc -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 100 -r 50 -aspect 16:9 -b:v 16000k -maxrate:v 16000k  -c:a libfdk_aac -af volume=100/100 -ac 2 -ar 44100 -ab 48k -map 0:v? -map 0:a? -map 0:s? -movflags faststart -f mp4 test.mp4
+
+
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
 * 
+
