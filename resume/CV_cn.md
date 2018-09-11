@@ -65,3 +65,5 @@ Email：lance_lmwang@qq.com；主页：<https://https://liminwang.github.io>；�
 - [基于切片的视频转码加速方法](https://patentimages.storage.googleapis.com/74/68/51/16effa926a268a/CN105227968A.pdf)
 - [流媒体直播录制冗余热备的方法及系统](https://patentimages.storage.googleapis.com/80/07/fd/ac48b0b302319a/CN106656593A.pdf)
 
+## 开源项目
+- [libmp4](https://github.com/LiminWang/libmp4)
