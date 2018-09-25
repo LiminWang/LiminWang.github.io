@@ -148,6 +148,12 @@ $ git add your_modify_fle
 $ git push [remote] [branch]
 ``` 
 
+- 合并特定commits 到另一个分支
+```
+$ git checkout branch
+$ git cherry-pick merge_commit_id
+```
+
 
 ## 创建tag
 - 列出所有tag
