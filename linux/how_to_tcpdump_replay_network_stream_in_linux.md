@@ -32,6 +32,7 @@ $ sudo apt-get install tcpreplay
 
 ```sh
 $ sudo tcpdump -w dump.pcap -i eth0
+$ tcpdump -i enp59s0f1 -t -s0 -C 300M -Z root host 230.0.0.1 and port 7001 -w test.dump
 ```
 ## 简单分析
 ```sh
