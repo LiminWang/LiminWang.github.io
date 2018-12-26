@@ -29,28 +29,28 @@ $ docker info # 查看系统(docker)层面信息，包括管理的images, contai
 # pulls down the mysql image 
 $ docker pull mysql
 
-$ mkdir -p /opt/data/mysql
+$ mkdir -p /var/gogs/mysql
 # Run the docker mysql image 
 $ docker run --name mysql-server -t \ 
       -e MYSQL_DATABASE="gogs" \ 
       -e MYSQL_USER="gogs" \ 
       -e MYSQL_PASSWORD="gogs.mysql" \ 
       -e MYSQL_ROOT_PASSWORD="gogs.mysql" \ 
-      -v /opt/data/mysql:/var/lib/mysql \ 
+      -v /var/gogs/mysql:/var/lib/mysql \ 
       -v /etc/localtime:/etc/localtime:ro \ 
       -d mysql 
 
-$ docker logs vchari-mysql
-$ docker inspect vchari-mysql
+$ docker logs mysql-server
+$ docker inspect mysql-server
 ```
 
 ### gogs安装
 $ docker pull gogs/gogs
-$ mkdir -p /opt/data/gogs
-$ docker run -d --name=gogs -p 10022:22 -p 3000:3000 --link mysql-server:mysql-server -v /opt/data/gogs:/data gogs/gogs
+$ mkdir -p /var/gogs/gogs
+$ docker run -d --name=gogs -p 10022:22 -p 3000:3000 --link mysql-server:mysql-server -v /var/gogos/gogs:/data gogs/gogs
 
 >>>
-# 将 gogs 容器 /data的目录，挂载到宿主机 /opt/data/gogs目录，避免删除容器时数据丢失; 
+# 将 gogs 容器 /data的目录，挂载到宿主机 /var/gogos/gogs目录，避免删除容器时数据丢失; 
 # --link mysql-server:mysql-server  将 mysql-server 容器，链接到 gogs 容器，容器内部通过 mysql-server 主机名即可与之通信;
  -p 10022:22 -p 13000:3000 ，分别映射 宿主机10022与3000 端口，到 gogs容器的 22 与 3000 端口，用于对外ssh和http通信，下面配置gogs 也需要用到; 
 $ docker start gogs
