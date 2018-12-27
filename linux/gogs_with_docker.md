@@ -64,6 +64,7 @@ $ docker inspect gogs
 
 # 检查时间是否一致
 $ date
+$ docker container  ls
 $ docker exec -ti gogs bash
 bash-4.4# date
 # 恢复备份数据
@@ -79,3 +80,11 @@ http://localhost:3000/install
 
 数据库主机设置:
 mysql-server:3306
+
+# 设置开启自重庆
+```
+[root@localhost ~]# docker update --restart=always gogs
+gogs
+[root@localhost ~]# docker update --restart=always mysql-server
+mysql-server
+```
