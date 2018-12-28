@@ -1,4 +1,4 @@
-
+# gitlab install
 
 ## 安装基本依赖包
 $ sudo yum install -y curl policycoreutils-python openssh-server
