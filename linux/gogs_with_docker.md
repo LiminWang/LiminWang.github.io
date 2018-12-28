@@ -50,12 +50,12 @@ $ docker pull gogs/gogs
 $ mkdir -p /var/gogs/gogs
 $ docker run -d --name=gogs -p 10022:22 -p 3000:3000 \
     --link mysql-server:mysql-server \
-    -v /var/gogos/gogs:/data  \
+    -v /var/gogs/gogs:/data  \
     -v /etc/localtime:/etc/localtime:ro \ 
     gogs/gogs
 
 >>>
-# 将 gogs 容器 /data的目录，挂载到宿主机 /var/gogos/gogs目录，避免删除容器时数据丢失; 
+# 将 gogs 容器 /data的目录，挂载到宿主机 /var/gogs/gogs目录，避免删除容器时数据丢失; 
 # --link mysql-server:mysql-server  将 mysql-server 容器，链接到 gogs 容器，容器内部通过 mysql-server 主机名即可与之通信;
  -p 10022:22 -p 13000:3000 ，分别映射 宿主机10022与3000 端口，到 gogs容器的 22 与 3000 端口，用于对外ssh和http通信，下面配置gogs 也需要用到; 
  -v /etc/localtime:/etc/localtime:ro保存系统时间一致
