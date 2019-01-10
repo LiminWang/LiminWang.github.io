@@ -93,14 +93,13 @@ unicharset_extractor lang.fontname.exp0.box
  
 ```
 官方Wiki说的是还有这一步，但是不知道是不是一定要通过源码编译才有，反正我是没找到，这一步就忽略了。
-training/set_unicharset_properties -U input_unicharset -O output_unicharset --script_dir=training/langdata
+set_unicharset_properties -U input_unicharset -O output_unicharset --script_dir=training/langdata
 
 ```
 
 * 定义font_properties文件
     * 在当前训练的文件夹中，新建font_properties文件，输入 font 0 0 0 0 0
     * 保存退出
-    * 文件名不要自己发挥，只能是这个名字
     * font_properties文件的目的是提供字体样式信息，当字体被识别时将显示在输出中
 
 * clustering 聚类
@@ -108,22 +107,24 @@ training/set_unicharset_properties -U input_unicharset -O output_unicharset --sc
     * shapeclustering 的说明是 should not normally be used except for the Indic languages 所以，不是印度语，千万千万不要执行，否则你就会发现识别的全是错误的 。
     
     ```
-    mftraining -F font_properties -U unicharset -O num.unicharset lang.fontname.exp0.tr
+    mftraining -F font_properties -U unicharset -O lang.unicharset lang.fontname.exp0.tr
     cntraining lang.fontname.exp0.tr
     ``` 
 
 * 合并文件
-    * 把聚类生成的shapetable，normproto，inttemp，pffmtable几个文件改成用lang.前缀重命名(num. shapetable)
+    * 把聚类生成的shapetable，normproto，inttemp，pffmtable几个文件改成用lang.前缀重命名(lang. shapetable)
     
     ```
-    mv inttemp num.inttemp
-    mv normproto num.normproto
-    mv pffmtable num.pffmtable
-    mv shapetable num.shapetable
+    mv inttemp .ingnttemp
+    mv normproto lang.normproto
+    mv pffmtable lang.pffmtable
+    mv shapetable lang.shapetable
     
-    combine_tessdata num.
+    combine_tessdata lang.
     ```
     
-    * 生成num.traineddata 并且打印的结果中Offset 1、3、4、5、13 这些项不是 -1 方可；将num.traineddata拷贝到/usr/local/Cellar/tesseract/3.05.01/share/tessdata下，tesseract --list-langs就会显示可用的num语言包
+    * 生成lang.traineddata 并且打印的结果中Offset 1、3、4、5、13 这些项不是-1方可；
+    * 将lang.traineddata拷贝到/usr/local/Cellar/tesseract/3.05.01/share/tessdata
+    * tesseract --list-langs就会显示可用的lang语言包
             
 
