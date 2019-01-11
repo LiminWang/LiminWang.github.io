@@ -19,7 +19,7 @@ $ brew install imagemagick
 
 ## training 训练
 
-> 参考：https://www.jianshu.com/p/5f847d8089ce
+> 参考：https://github.com/LiminWang/build_ffmpeg/blob/master/traning_tesseract.sh
 > 图片预处理用到的知识： https://github.com/tesseract-ocr/tesseract/wiki/ImproveQuality
 
 ### 预备知识：
