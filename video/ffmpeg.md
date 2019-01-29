@@ -8,6 +8,11 @@ $ ffprobe -i input.mp4 -v quiet -of json -show_format -show_streams
 $ ffprobe -v quiet -select_streams v -show_frames input.ts -of json
 $ ffprobe -v quiet -select_streams v -show_frames -show_entries frame=key_frame,pkt_pts_time,pict_type  input.ts -of json
 $ ffprobe -v quiet -show_entries stream=codec_type,start_time,duration input.mp4 -of json
+$ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=/home/lmwang/movie/zhebiao.mp4,crop=iw/4:ih/4,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo" > test.out
+$ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo,metadata=print:file=result.txt"
+$ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo,metadata=print:key=lavfi.ocr.text"
+-f null -
+-f null -
 ```
 
 ## 截图
@@ -56,12 +61,23 @@ $ ffmpeg -i side1.mp4 -i side2.mp4 -filter_complex "[0:v]setpts=PTS-STARTPTS,
 pad=iw*2:ih[bg]; [1:v]setpts=PTS-STARTPTS[fg]; [bg][fg]overlay=w"
 side1_by_side2.mp4
 ```
+
 ### slideshow
 ```
 $ ffmpeg -framerate 10 -f image2 -i image%d.jpg video.mpg
 $ ffmpeg -start_number 126 -i img%03d.png -pix_fmt yuv420p out.mp4
 $ cat *.png | ffmpeg -f image2pipe -i - output.mkv
 $ ffmpeg -loop 1 -i img.jpg -c:v libx264 -t 30 -pix_fmt yuv420p out.mp4
+```
+
+### 音频音柱
+```
+$ ffmpeg -i /Users/lmwang/Downloads/dongfanghd_audio.ts -filter_complex "showwaves=s=1280x720:mode=line:rate=25,format=yuv420p" ~/Downloads/test.mp4
+```
+
+### 音频合成图片
+```
+$ ffmpeg -y -loop 1 -i ~/Downloads/cctv5.png -i /Users/lmwang/Downloads/dongfanghd_audio.ts -shortest  ~/Downloads/test.ts
 ```
 
 ### 叠加马赛克
