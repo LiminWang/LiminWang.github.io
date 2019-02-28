@@ -78,6 +78,7 @@ $ ffmpeg -i /Users/lmwang/Downloads/dongfanghd_audio.ts -filter_complex "showwav
 ### 音频合成图片
 ```
 $ ffmpeg -y -loop 1 -i ~/Downloads/cctv5.png -i /Users/lmwang/Downloads/dongfanghd_audio.ts -shortest  ~/Downloads/test.ts
+$ ffmpeg -y -r 25 -loop 1 -i ./cctv5.png  -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 -c:a mp2  -t 120 output.mp4
 ```
 
 ### 叠加马赛克
