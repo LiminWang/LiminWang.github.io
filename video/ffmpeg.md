@@ -289,6 +289,12 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 
  /opt/bravo/bts/transcoder/objs/ffmpeg -probesize 10000000 -analyzeduration 10000000 -y -hwaccel cuvid -c:v h264_cuvid -gpu 1 -i /root/4K-8m-60.mp4 -filter_complex "scale_npp=w=3840:h=2160:format=yuv420p,hwdownload,format=yuv420p" -c:v hevc_nvenc -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 100 -r 50 -aspect 16:9 -b:v 16000k -maxrate:v 16000k  -c:a libfdk_aac -af volume=100/100 -ac 2 -ar 44100 -ab 48k -map 0:v? -map 0:a? -map 0:s? -movflags faststart -f mp4 test.mp4
 
+### HDR10
+
+./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 5 -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc smpte2084  -hdr 1 test.ts
+
+### HLG
+./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 5 -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -hdr 1 test.ts
 
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
