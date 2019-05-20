@@ -17,7 +17,10 @@ Date:   Sun Sep 30 18:07:29 2018 +0800
 
 
 ## 生成 patch 文件
-git format-patch -1 6fa7b76a10bee65536aa534e411e35c4d685f90e
+$ git format-patch -1 6fa7b76a10bee65536aa534e411e35c4d685f90e
+
+## 检查patch合法性
+$ ./tools/patcheck 0001-avcodec-nvenc-add-more-sei-data-support.patch
 
 ## 设置 git 的 smtp 参数
 
