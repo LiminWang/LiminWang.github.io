@@ -291,10 +291,17 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 
 ### HDR10
 
-./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 5 -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc smpte2084  -hdr 1 test.ts
+./ffmpeg_g -y -i 4K.mp4 -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
+    -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc smpte2084 -sei hdr10  -master_display \
+    "G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50)" -max_cll "0, 0" test.ts
+
+./ffmpeg_g -y -hwaccel cuvid -c:v hevc_cuvid -i 4K.mp4 -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
+    -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc smpte2084 -sei hdr10  -master_display \
+    "G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50)" -max_cll "0, 0" test.ts
 
 ### HLG
-./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 5 -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -hdr 1 test.ts
+./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
+    -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -sei hlg test.ts
 
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
