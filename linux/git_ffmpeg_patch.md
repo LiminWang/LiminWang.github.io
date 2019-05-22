@@ -48,6 +48,7 @@ $ cat ~/.gitconfig
 ## 发送邮件给 ffmpeg-devel@ffmpeg.org
 ```
 git send-email ../the_patch_file_in_the_dir.patch
+git send-email -to ffmpeg-devel@ffmpeg.org -cc cc_email patch_dir/
 ```
 
 输入 ffmpeg-devel 邮箱地址 ffmpeg-devel@ffmpeg.org
