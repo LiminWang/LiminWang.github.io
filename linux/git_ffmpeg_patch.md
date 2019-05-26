@@ -50,8 +50,12 @@ $ cat ~/.gitconfig
 git send-email ../the_patch_file_in_the_dir.patch
 git send-email -to ffmpeg-devel@ffmpeg.org -cc cc_email patch_dir/
 ```
-
 输入 ffmpeg-devel 邮箱地址 ffmpeg-devel@ffmpeg.org
+
+## 增加patch版本息
+```
+git send-email -v2 patch_dir/
+```
 
 ## 查看状态
 发送邮件过一段时间后(邮件没有加入列表时间会长）,在这里能查到
