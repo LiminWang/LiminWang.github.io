@@ -45,7 +45,7 @@ $ ffmpeg -discard nokey -i video.mp4 -q:v 2 -vf select="eq(pict_type\,PICT_TYPE_
 ```sh
 $ ffmpeg -i input.ts -movflags faststart -c:v copy -c:a copy -f mp4 -y mux.mp4
 $ ffmpeg -discard nokey -i mux.mp4 -c copy -vsync vfr discard.mp4
-$ ffmpeg -skip_frame nokey -i discard.mp4 -vf "scale=w=240:h=180:flags=fast_bilinear" -vsync vfr frame%04d.png
+$ ffmpeg -skip_frame nokey -ss 00:00:18 -i discard.mp4 -vf "scale=w=240:h=180:flags=fast_bilinear" -vsync vfr frame%04d.png -threads 4
 ```
 
 
@@ -61,6 +61,8 @@ $ ffmpeg -i side1.mp4 -i side2.mp4 -filter_complex "[0:v]setpts=PTS-STARTPTS,
 pad=iw*2:ih[bg]; [1:v]setpts=PTS-STARTPTS[fg]; [bg][fg]overlay=w"
 side1_by_side2.mp4
 ```
+
+./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
 
 ### slideshow
 ```
@@ -123,6 +125,10 @@ crop=iw:ih:iw/2:ih,pad=iw:ih[bg];[1:v]setpts=PTS-STARTPTS, crop=iw/2:ih:0:0[fg];
 [bg][fg]overlay=0" -vcodec h264 -b:v 25000k ad_merge.ts
 ```
 
+### LOGO检测和替换
+```
+$ ffplay -i ~/Movies/zhebiao.mp4 -vf find_rect=logo/detect_1.tif,cover_rect=logo/zhebiao_yuv.jpg:mode=cover
+```
 
 ### OCR text
 * build ffmpeg --with-tesseract
@@ -191,6 +197,11 @@ $ $ ffmpeg -i input.mp4 -frames 1 -vf "select=not(mod(n\,500)),scale=160:120,til
 
 ```sh
 $ ffmpeg -i input1.mp4 -i input2.jpg -filter_complex "[1] scale=100:100 [tmp];[0][tmp] overlay=x='if(gte(t,2),t*100, 10)':y=30" output.mp4
+```
+
+## 显示1x1棋盘效应效果（有的显示A，有的显示B:
+```sh
+./ffmpeg -y  -i input1.mp4 -i input2.mp4 -filter_complex "blend=all_expr='if(eq(mod(X,2),mod(Y,2)),A,B)'" -c:v hevc_videotoolbox  -b:v 15000k  output.mp4
 ```
 
 ### 声音波形图效果
