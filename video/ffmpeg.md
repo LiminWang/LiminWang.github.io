@@ -140,6 +140,12 @@ $ ffmpeg -i input.ts -filter_complex "[0:v]crop=200:200:60:30,boxblur=2[fg];[0:v
 $ ffmpeg -i input.ts -vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.ts
 ``
 
+### 叠加logo
+ffmpeg -loglevel debug -i /root/420_10bit.ts -i /root/logo.png -filter_complex
+"[1:v]scale=3280:2160,format=p010le[logo];[0:v][logo]overlay=x=main_w-100:y=main_h-100,format=p010le"
+-c:v hevc_nvenc a.ts
+
+
 ###  psnr和ssim质量比较
 
 ```sh
@@ -288,6 +294,17 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 
 
  /opt/bravo/bts/transcoder/objs/ffmpeg -probesize 10000000 -analyzeduration 10000000 -y -hwaccel cuvid -c:v h264_cuvid -gpu 1 -i /root/4K-8m-60.mp4 -filter_complex "scale_npp=w=3840:h=2160:format=yuv420p,hwdownload,format=yuv420p" -c:v hevc_nvenc -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 100 -r 50 -aspect 16:9 -b:v 16000k -maxrate:v 16000k  -c:a libfdk_aac -af volume=100/100 -ac 2 -ar 44100 -ab 48k -map 0:v? -map 0:a? -map 0:s? -movflags faststart -f mp4 test.mp4
+
+### decklink采集卡测试
+./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
+-i 'DeckLink 8K Pro (1)' -vf \
+scale=3840x2160:flags=fast_bilinear,format=pix_fmts=yuv420p \
+-codec:v nvenc_hevc -ac 2 -acodec libfdk_aac -ar 44100 -ab 48k -f mpegts /dev/null
+
+./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
+-i 'DeckLink 8K Pro (1)' -vf \
+scale=3840x2160:flags=fast_bilinear,format=pix_fmts=p010le \
+-codec:v nvenc_hevc -ac 2 -acodec libfdk_aac -ar 44100 -ab 48k -f mpegts /dev/null
 
 
 # FFmpeg resource
