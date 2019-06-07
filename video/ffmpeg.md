@@ -146,6 +146,12 @@ $ ffmpeg -i input.ts -filter_complex "[0:v]crop=200:200:60:30,boxblur=2[fg];[0:v
 $ ffmpeg -i input.ts -vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.ts
 ``
 
+### 叠加logo
+ffmpeg -loglevel debug -i /root/420_10bit.ts -i /root/logo.png -filter_complex
+"[1:v]scale=3280:2160,format=p010le[logo];[0:v][logo]overlay=x=main_w-100:y=main_h-100,format=p010le"
+-c:v hevc_nvenc a.ts
+
+
 ###  psnr和ssim质量比较
 
 ```sh
@@ -313,6 +319,17 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 ### HLG
 ./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
     -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -sei hlg test.ts
+
+### decklink采集卡测试
+./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
+-i 'DeckLink 8K Pro (1)' -vf \
+scale=3840x2160:flags=fast_bilinear,format=pix_fmts=yuv420p \
+-codec:v nvenc_hevc -ac 2 -acodec libfdk_aac -ar 44100 -ab 48k -f mpegts /dev/null
+
+./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
+-i 'DeckLink 8K Pro (1)' -vf \
+scale=3840x2160:flags=fast_bilinear,format=pix_fmts=p010le \
+-codec:v nvenc_hevc -ac 2 -acodec libfdk_aac -ar 44100 -ab 48k -f mpegts /dev/null
 
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
