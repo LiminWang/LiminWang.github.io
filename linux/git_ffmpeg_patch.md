@@ -19,6 +19,9 @@ Date:   Sun Sep 30 18:07:29 2018 +0800
 ## 生成 patch 文件
 $ git format-patch -1 6fa7b76a10bee65536aa534e411e35c4d685f90e
 
+## 增加patch版本息
+$ git format-patch -v2 -1 6fa7b76a10bee65536aa534e411e35c4d685f90e
+
 ## 检查patch合法性
 $ ./tools/patcheck 0001-avcodec-nvenc-add-more-sei-data-support.patch
 
@@ -49,12 +52,14 @@ $ cat ~/.gitconfig
 ```
 git send-email ../the_patch_file_in_the_dir.patch
 git send-email -to ffmpeg-devel@ffmpeg.org -cc cc_email patch_dir/
+git send-email --no-chain-reply-to --to=ffmpeg-devel@ffmpeg.org --in-reply-to=message_id
 ```
 输入 ffmpeg-devel 邮箱地址 ffmpeg-devel@ffmpeg.org
 
 ## 增加patch版本息
 ```
-git send-email -v2 patch_dir/
+git send-email -s -v2 -3
+git send-email -s -v2 -3 -cover-letter
 ```
 
 ## 查看状态

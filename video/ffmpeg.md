@@ -282,6 +282,11 @@ $ ffplay -debug vis_mb_type input.mp4
 $ ffmpeg -debug vis_mb_type -i input.mp4 output.mp4
 ```
 
+### 场景切换检测
+```
+./ffmpeg -i input.ts -vf  "select='gt(scene,0.3)',metadata=print" -pix_fmt yuv420p10 -f null - 2>&1
+```
+
 ### xavc mxf输出
 
 ./ffmpeg -hwaccel qsv -hwaccel_device /dev/dri/renderD128 -hwaccel_output_format
