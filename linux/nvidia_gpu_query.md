@@ -47,6 +47,10 @@ Option "help" is not recognized.
     [-h | --help]:        Display help information
 ```
 
+### 占用率和内存查询
+```
+$ nvidia-smi -a -q -d utilization
+```
 
 ### 按卡查询
 
