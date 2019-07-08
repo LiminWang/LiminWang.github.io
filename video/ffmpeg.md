@@ -48,6 +48,20 @@ $ ffmpeg -discard nokey -i mux.mp4 -c copy -vsync vfr discard.mp4
 $ ffmpeg -skip_frame nokey -ss 00:00:18 -i discard.mp4 -vf "scale=w=240:h=180:flags=fast_bilinear" -vsync vfr frame%04d.png -threads 4
 ```
 
+### 快速合图
+```sh
+./ffmpeg -ss 50.058 -t 10 -i "input.mp4" -vf "scale=w=240:h=180:flags=fast_bilinear" -vsync vfr -y frame%04d.png
+
+all_files=`ls frame*`
+input_nr=0;
+for i in $all_files
+do
+  input_files="$input_files -i $i"
+  let input_nr=$input_nr+1;
+done
+
+./ffmpeg $input_files -filter_complex "hstack=inputs=$input_nr" -y big.png
+```
 
 ### 获取关键帧基本信息
 ```sh
@@ -60,7 +74,24 @@ $ ffmpeg -skip_frame nokey -i input.mp4 -vf showinfo -vsync 0 -f null -
 $ ffmpeg -i side1.mp4 -i side2.mp4 -filter_complex "[0:v]setpts=PTS-STARTPTS,
 pad=iw*2:ih[bg]; [1:v]setpts=PTS-STARTPTS[fg]; [bg][fg]overlay=w"
 side1_by_side2.mp4
+
+$ ffmpeg -i left.mp4 -i right.mp4 -filter_complex \
+"[0:v][1:v]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
+-map "[v]" -map "[a]" -ac 2 output.mp4
+
+$ ffmpeg -i left.mp4 -i right.mp4 -filter_complex \
+""[0:v]setpts=PTS-STARTPTS[left];[1:v]setpts=PTS-STARTPTS[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
+-map "[v]" -map "[a]" -ac 2 output.mp4
+
+$ ffmpeg -i top_l.mp4 -i top_r.mp4 -i bottom_l.mp4 -i bottom_r.mp4 -filter_complex \
+"[0:v][1:v]hstack[t];[2:v][3:v]hstack[b];[t][b]vstack[v]; \
+ [0:a][1:a][2:a][3:a]amerge=inputs=4[a]" \
+-map "[v]" -map "[a]" -ac 2 -shortest output.mp4
+
+$ ffplay -f lavfi "movie=left.mp4,scale=iw/2:ih[v0];movie=right.mp4,scale=iw/2:ih[v1];[v0][v1]hstack"
+$ ffplay -f lavfi "movie=side_by_side/cctv3.ts[v0];movie=side_by_side/cctv3.ts[v1];[v0][v1]vstack=inputs=2"
 ```
+
 
 ./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
 
