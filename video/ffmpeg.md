@@ -241,6 +241,11 @@ $ ffmpeg -i input1.mp4 -i input2.jpg -filter_complex "[1] scale=100:100 [tmp];[0
 ./ffmpeg -y  -i input1.mp4 -i input2.mp4 -filter_complex "blend=all_expr='if(eq(mod(X,2),mod(Y,2)),A,B)'" -c:v hevc_videotoolbox  -b:v 15000k  output.mp4
 ```
 
+## 场景切换
+```sh
+./ffprobe -show_frames -of compact=p=0 -f lavfi "movie=fate-suite/svq3/Vertical400kbit.sorenson3.mov,select=gt(scene\,.4)"
+```
+
 ### 声音波形图效果
 ```sh
 $ ffmpeg -i input.ts -filter_complex "[0:a]showvolume=f=1:b=4:w=720:h=68,format=yuv420p[vid]" -map "[vid]" -map 0:a -c:v libx264 -preset fast -crf 18 -codec:a copy -strict -2 -b:a 192k audio.mp4 $ ffmpeg -i ~/Downloads/test_norm.ts -filter_complex "[0:a]ahistogram,format=yuv420p[vid]" -map "[vid]" -map 0:a -c:v libx264 -preset fast -crf 18 -codec:a copy -strict -2 -b:a 192k audio.mp4
@@ -322,6 +327,8 @@ $ ffmpeg -debug vis_mb_type -i input.mp4 output.mp4
 ### 场景切换检测
 ```
 ./ffmpeg -i input.ts -vf  "select='gt(scene,0.3)',metadata=print" -pix_fmt yuv420p10 -f null - 2>&1
+./ffprobe -of compact=p=0 -show_entries frame=pkt_pts:frame_tags -bitexact -f lavfi \
+"sws_flags=+accurate_rnd+bitexact;movie=/Users/lmwang/Movies/Passengers_Breakfast_1080-sdr.mkv,select=gt(scene\,.25)"
 ```
 
 ### xavc mxf输出
@@ -340,7 +347,10 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 ./ffmpeg -load_plugin hevc_hw -codec:v hevc_qsv -i UHD_Soccer.ts -f null -
 
 
- /opt/bravo/bts/transcoder/objs/ffmpeg -probesize 10000000 -analyzeduration 10000000 -y -hwaccel cuvid -c:v h264_cuvid -gpu 1 -i /root/4K-8m-60.mp4 -filter_complex "scale_npp=w=3840:h=2160:format=yuv420p,hwdownload,format=yuv420p" -c:v hevc_nvenc -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 100 -r 50 -aspect 16:9 -b:v 16000k -maxrate:v 16000k  -c:a libfdk_aac -af volume=100/100 -ac 2 -ar 44100 -ab 48k -map 0:v? -map 0:a? -map 0:s? -movflags faststart -f mp4 test.mp4
+ /opt/bravo/bts/transcoder/objs/ffmpeg -probesize 10000000 -analyzeduration 10000000 -y -hwaccel cuvid -c:v h264_cuvid \
+ -gpu 1 -i /root/4K-8m-60.mp4 -filter_complex "scale_npp=w=3840:h=2160:format=yuv420p,hwdownload,format=yuv420p"
+ -c:v hevc_nvenc -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 100 -r 50 -aspect 16:9
+ -b:v 16000k -maxrate:v 16000k  -c:a libfdk_aac -af volume=100/100 -ac 2 -ar 44100 -ab 48k -map 0:v? -map 0:a? -map 0:s? -movflags faststart -f mp4 test.mp4
 
 ### HDR10
 
@@ -355,6 +365,10 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 ### HLG
 ./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
     -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -sei hlg test.ts
+
+### framecrc
+./ffmpeg  -c:v pgmyuv -i /Users/lmwang/Documents/git/build_ffmpeg/build/ffmpeg.git/tests/vsynth1/%02d.pgm \
+    -vf interlace=tff,fieldorder=bff -sws_flags +accurate_rnd+bitexact -f framecrc -
 
 ### decklink采集卡测试
 ./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
