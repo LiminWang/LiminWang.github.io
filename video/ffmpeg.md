@@ -244,6 +244,11 @@ $ ffmpeg -i input1.mp4 -i input2.jpg -filter_complex "[1] scale=100:100 [tmp];[0
 ## 场景切换
 ```sh
 ./ffprobe -show_frames -of compact=p=0 -f lavfi "movie=fate-suite/svq3/Vertical400kbit.sorenson3.mov,select=gt(scene\,.4)"
+
+## freezedetect
+```
+```
+./ffprobe -of compact=p=0 -show_entries frame=pkt_pts:frame_tags -bitexact -f lavfi -f lavfi "mptestsrc=r=25:d=10:m=51,freezedetect"
 ```
 
 ### 声音波形图效果
@@ -369,6 +374,24 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
 ### framecrc
 ./ffmpeg  -c:v pgmyuv -i /Users/lmwang/Documents/git/build_ffmpeg/build/ffmpeg.git/tests/vsynth1/%02d.pgm \
     -vf interlace=tff,fieldorder=bff -sws_flags +accurate_rnd+bitexact -f framecrc -
+./ffmpeg -c:v pgmyuv -i ./tests/vsynth1/%02d.pgm -filter_complex \
+"split[main][over];[over]scale=88:72,pad=96:80:4:4[overf];[main][overf]overlay=240:16:format=yuv420" -f framecrc -
+make fate-filter-overlay_yuv420 SAMPLES=./fate-suite
+./ffmpeg -c:v pgmyuv -i ./tests/vsynth1/%02d.pgm -filter_complex "scale=88:72,pad=96:80:4:4" -f framecrc -
+
+make fate-gifenc-rgb8 SAMPLES=./fate-suite
+./ffmpeg -i ./fate-suite/gif/tc217.gif -c:v gif -pix_fmt rgb8 -f framecrc -
+
+fate-filter-overlay_yuv420
+fate-gifenc-rgb8
+fate-filter-overlay_rgb
+fate-filter-fieldorder
+fate-filter-lavd-scalenorm
+h264-reinit-large_420_8-to-small_420_8
+fate-h264-brokensps-2580
+./ffmpeg_g -loglevel trace -i ./fate-suite/h264/brokensps.flv -filter_threads 9 -vf format=yuv420p,scale=w=192:h=144 -sws_flags bitexact+bilinear -f framecrc -
+./ffmpeg_g -y -i ./fate-suite/h264/reinit-large_420_8-to-small_420_8.h264  -filter_threads 9 -vf format=yuv444p10le,scale=w=352:h=288 -sws_flags bitexact+bilinear -f framecrc -
+
 
 ### decklink采集卡测试
 ./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
