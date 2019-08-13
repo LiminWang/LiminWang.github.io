@@ -28,7 +28,7 @@ $ ffmpeg -i input.mp4 -ss 00:00:18.123 -f image2 -vframes 1 thumbmail.png
 
 ### 10秒截取一帧
 
-```sh
+```
 $ ffmpeg -i input.mp4 -f image2 -vf fps=fps=1/10 thumbnail_%3d.png
 ```
 
@@ -49,7 +49,7 @@ $ ffmpeg -skip_frame nokey -ss 00:00:18 -i discard.mp4 -vf "scale=w=240:h=180:fl
 ```
 
 ### 快速合图
-```sh
+```
 ./ffmpeg -ss 50.058 -t 10 -i "input.mp4" -vf "scale=w=240:h=180:flags=fast_bilinear" -vsync vfr -y frame%04d.png
 
 all_files=`ls frame*`
@@ -70,7 +70,7 @@ $ ffmpeg -skip_frame nokey -i input.mp4 -vf showinfo -vsync 0 -f null -
 
 ### side by side视频比较
 
-```sh
+```
 $ ffmpeg -i side1.mp4 -i side2.mp4 -filter_complex "[0:v]setpts=PTS-STARTPTS,
 pad=iw*2:ih[bg]; [1:v]setpts=PTS-STARTPTS[fg]; [bg][fg]overlay=w"
 side1_by_side2.mp4
@@ -90,10 +90,8 @@ $ ffmpeg -i top_l.mp4 -i top_r.mp4 -i bottom_l.mp4 -i bottom_r.mp4 -filter_compl
 
 $ ffplay -f lavfi "movie=left.mp4,scale=iw/2:ih[v0];movie=right.mp4,scale=iw/2:ih[v1];[v0][v1]hstack"
 $ ffplay -f lavfi "movie=side_by_side/cctv3.ts[v0];movie=side_by_side/cctv3.ts[v1];[v0][v1]vstack=inputs=2"
-```
-
-
 ./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
+```
 
 ### slideshow
 ```
@@ -164,7 +162,7 @@ $ ffplay -i ~/Movies/zhebiao.mp4 -vf find_rect=logo/detect_1.tif,cover_rect=logo
 ### OCR text
 * build ffmpeg --with-tesseract
 
-```sh
+```
 $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=img.png,ocr" 
 4 ffprobe -f lavfi -i "movie=input.mov,ocr" -show_entries frame=pkt_dts_time:frame_tags=lavfi.ocr.text -of json
 ```
@@ -175,21 +173,21 @@ $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=img.png,ocr
 $ ffmpeg -i input.ts -filter_complex "[0:v]crop=200:200:60:30,boxblur=2[fg];[0:v][fg]overlay=60:30[v]" -map "[v]"
     -map 0:a -c:v libx264 -c:a copy blur.ts
 $ ffmpeg -i input.ts -vf "delogo=60:30:200:200"  -c:v libx264 -c:a copy -y blur.ts
-``
+```
 
 ### 叠加logo
+```
 ffmpeg -loglevel debug -i /root/420_10bit.ts -i /root/logo.png -filter_complex
 "[1:v]scale=3280:2160,format=p010le[logo];[0:v][logo]overlay=x=main_w-100:y=main_h-100,format=p010le"
 -c:v hevc_nvenc a.ts
+```
 
 
 ###  psnr和ssim质量比较
-
-```sh
+```
 $ ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y -f rawvideo /dev/null
 $ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "ssim=stats_file=ssim_stats.log" -f null -
 $ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "psnr=stats_file=psnr_stats.log" -f null -
-
 ```
 
 
@@ -244,9 +242,9 @@ $ ffmpeg -i input1.mp4 -i input2.jpg -filter_complex "[1] scale=100:100 [tmp];[0
 ## 场景切换
 ```sh
 ./ffprobe -show_frames -of compact=p=0 -f lavfi "movie=fate-suite/svq3/Vertical400kbit.sorenson3.mov,select=gt(scene\,.4)"
-
-## freezedetect
 ```
+
+### freezedetect
 ```
 ./ffprobe -of compact=p=0 -show_entries frame=pkt_pts:frame_tags -bitexact -f lavfi -f lavfi "mptestsrc=r=25:d=10:m=51,freezedetect"
 ```
@@ -258,6 +256,11 @@ $ ffmpeg -i input.mp4 -filter_complex
 "[0:a]showfreqs=s=640x518:mode=line:fscale=log,pad=1280:720[vs];
 [0:a]showspectrum=mode=separate: color=intensity:scale=cbrt:s=640x518[ss];[0:a]showwaves=s=1280x202:mode=line[sw];[vs][ss]overlay=w[bg];[bg][sw]overlay=0:H-h[out]"
 -map "[out]" -map 0:a -c:v libx264 -preset fast -crf 18 -c:a copy test.mp4
+```
+
+### hdr2sdr
+```
+./ffmpeg -y -i hdr.ts -vf scale=-1:-1:in_color_matrix=bt2020:nb_threads=12,format=rgb48,lut3d=./8a_HLG_BT709_mode-nar_in-nar_out-nar_nocomp.cube,scale=-1:-1:out_color_matrix=bt709:nb_threads=12,format=yuv420p -c:v libsvt_hevc -color_primaries bt709 -colorspace bt709 -color_trc bt709 -b:v 15000k sdr.ts
 ```
 
 ### 查看编码参数
