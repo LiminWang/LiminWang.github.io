@@ -1,6 +1,37 @@
 # 阿里云上安装VPN
 
-## 安装
+## docker方式
+
+# https://hub.docker.com/r/hwdsl2/ipsec-vpn-server/
+
+$ cat vpn.env
+#IPsec PSK: xxxxxxx
+#Username: xxxxxxx
+#Password: xxxxxxx
+
+$ sudo docker run \
+       --name ipsec-vpn-server \
+       --env-file ./vpn.env \
+       --restart=always \
+       -p 500:500/udp \
+       -p 4500:4500/udp \
+       -d --privileged \
+       hwdsl2/ipsec-vpn-server
+
+
+## CentOS 关闭 AliYunDun
+使用 chkconfig –list 查看开机启动里面这个软件的服务名是什么，然后 off 掉 aegis 执行就可以了。
+
+# chkconfig --list
+aegis           0:off   1:off   2:on    3:on    4:on    5:on    6:off
+agentwatch      0:off   1:off   2:on    3:on    4:on    5:on    6:off
+cloudmonitor    0:off   1:off   2:on    3:on    4:on    5:on    6:off
+mysql           0:off   1:off   2:off   3:off   4:off   5:off   6:off
+netconsole      0:off   1:off   2:off   3:off   4:off   5:off   6:off
+network         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
+
+## 老方式
 - 购买阿里云ECS主机(香港主机), 不就是为了上google吗
 - 镜像选用CentOS 7.2 64位版本，实测ok 
 - 一键安装脚本
@@ -86,4 +117,3 @@ ipsec whack --trafficstatus
 $ sudo route delete -net 192.168.1.0
 $ sudo route add -net 192.168.1.0 -netmask 255.255.255.0 -gateway 192.168.3.1
 ```
-
