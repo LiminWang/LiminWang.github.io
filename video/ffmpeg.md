@@ -305,22 +305,28 @@ ffmpeg -i input.mp4 -vf vidstabtransform=smoothing=30:input="transforms.trf"
 output.mp4
 ```
 
+### hls
+```
+./ffmpeg -threads 4 -vsync 1 -i ~/Movies/input.mp4 -r 25 \
+-use_localtime 1 -use_localtime_mkdir 1 -hls_segment_filename \
+'%Y%m%d/file-%Y%m%d-%s.ts' ~/Movies/hls/out.m3u8
+```
+
 ### hls multiple output
 ```
-./ffmpeg -threads 4 -vsync 1 -i ~/Movies/1.mp4 -r 25 \
+./ffmpeg -threads 4 -vsync 1 -i ~/Movies/input.mp4 -r 25 \
 -b:v:0 5250k -c:v h264 -pix_fmt yuv420p -profile:v main -level 4.1 \
 -b:v:1 4200k -c:v h264 -pix_fmt yuv420p -profile:v main -level 4.1 \
 -b:v:1 3150k -c:v h264 -pix_fmt yuv420p -profile:v main -level 4.1 \
 -b:a:0 256k \
 -b:a:0 192k \
 -b:a:0 128k \
--c:a aac -ar 48000  -map 0:v -map 0:a:0 -map 0:v -map 0:a:0 -map 0:v -map 0:a:0
-\
+-c:a aac -ar 48000  -map 0:v -map 0:a:0 -map 0:v -map 0:a:0 -map 0:v -map 0:a:0 \
 -f hls -var_stream_map "v:0,a:0  v:1,a:1 v:2,a:2" \
--master_pl_name  master.m3u8 -t 300 -hls_time 10 -hls_init_time 4 -hls_list_size
-10 -master_pl_publish_rate 10 -hls_flags
+-master_pl_name  master.m3u8 -t 300 -hls_time 10 -hls_init_time 4 -hls_list_size \
+10 -master_pl_publish_rate 10 -hls_flags \
 delete_segments+discont_start+split_by_time  \
-"'~/Movies/vs%v/manifest.m3u8"
+~/Movies/hls/vs%v/manifest.m3u8
 ```
 
 ### 输入测试源生成
