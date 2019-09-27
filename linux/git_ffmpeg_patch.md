@@ -66,4 +66,10 @@ git send-email -s -v2 -3 -cover-letter
 发送邮件过一段时间后(邮件没有加入列表时间会长）,在这里能查到
 [patch](https://patchwork.ffmpeg.org/project/ffmpeg/list/)
 
+## 查询提交记录
+``
+git log --since=2019-03-30T00:00:00Z --until 2020-03-30T00:00:00Z --pretty=fuller | grep '^Author:' | sed 's/<.*//' |sort | uniq -c | sort -nr
+git log --since=2019-03-30T00:00:00Z --until 2020-03-30T00:00:00Z --pretty=fuller | grep '^Commit:' | sed 's/<.*//' |sort | uniq -c | sort -nr
+``
+
 
