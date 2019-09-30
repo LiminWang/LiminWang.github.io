@@ -93,6 +93,13 @@ $ ffplay -f lavfi "movie=side_by_side/cctv3.ts[v0];movie=side_by_side/cctv3.ts[v
 ./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
 ```
 
+### 自动测试源
+
+./ffplay -f lavfi -i "smptebars=duration=5:size=1280x720:rate=30"
+./ffplay -f lavfi -i "testsrc=duration=10:size=1280x720:rate=30"
+./ffmpeg -f lavfi -i testsrc=duration=10:size=1280x720:rate=30 test.mp4
+
+
 ### slideshow
 ```
 $ ffmpeg -framerate 10 -f image2 -i image%d.jpg video.mpg
@@ -220,6 +227,19 @@ $ ffmpeg -i input.mkv -filter:v "setpts=2.0*PTS" output.mkv
 ### 视频加入音频
 ```
 $ ffmpeg -i audio.wav -i video_wo_audio.avi video_w_audio.mpg
+```
+
+### 视频加入静音数据
+```
+$ ffmpeg -i video.mp4 -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+-c:v copy -shortest output.mp4
+```
+
+### 静音检测
+
+```
+./ffprobe -of  compact=p=0 -show_entries frame=pkt_pts:frame_tags -bitexact -f lavfi \
+"amovie=../fate-suite/lossless-audio/inside.tta,silencedetect=n=-33.5dB"
 ```
 
 ### 马赛克
