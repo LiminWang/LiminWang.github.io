@@ -79,6 +79,18 @@ $ ffmpeg -i left.mp4 -i right.mp4 -filter_complex \
 "[0:v][1:v]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
 -map "[v]" -map "[a]" -ac 2 output.mp4
 
+ >>> left half video side by side
+
+ ./ffmpeg -i ~/Movies/sr_source/src.ts -i ~/Movies/sr_source/ds_sr_4k.ts -filter_complex \
+ "[0:v]setpts=PTS-STARTPTS,scale=3840x2160,crop=iw/2:ih[left];[1:v]setpts=PTS-STARTPTS,crop=iw/2:ih[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
+ -map "[v]" -map "[a]" -ac 2 output.mp4
+
+ >>> right half video side by side
+./ffmpeg -i ~/Movies/sr_source/src.ts -i ~/Movies/sr_source/ds_sr_4k.ts -filter_complex \
+ "[0:v]setpts=PTS-STARTPTS,scale=3840x2160,crop=iw/2:ih:iw/2:ih[left];[1:v]setpts=PTS-STARTPTS,crop=iw/2:ih:iw/2:ih[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
+ -map "[v]" -map "[a]" -ac 2 output.ts
+
+
 $ ffmpeg -i left.mp4 -i right.mp4 -filter_complex \
 ""[0:v]setpts=PTS-STARTPTS[left];[1:v]setpts=PTS-STARTPTS[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
 -map "[v]" -map "[a]" -ac 2 output.mp4
