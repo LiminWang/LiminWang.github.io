@@ -292,8 +292,14 @@ $ ffmpeg -i input.mp4 -filter_complex
 
 ### hdr2sdr
 ```
-./ffmpeg -y -i hdr.ts -vf scale=-1:-1:in_color_matrix=bt2020:nb_threads=12,format=rgb48,lut3d=./8a_HLG_BT709_mode-nar_in-nar_out-nar_nocomp.cube,scale=-1:-1:out_color_matrix=bt709:nb_threads=12,format=yuv420p -c:v libsvt_hevc -color_primaries bt709 -colorspace bt709 -color_trc bt709 -b:v 15000k sdr.ts
+./ffmpeg -y -i hdr.ts -vf scale=-1:-1:in_color_matrix=bt2020,format=rgb48,lut3d=./8a_hlg_bt709.cube,scale=-1:-1:out_color_matrix=bt709:nb_threads=12,format=yuv420p -c:v libsvt_hevc -color_primaries bt709 -colorspace bt709 -color_trc bt709 -b:v 15000k sdr.ts
 ```
+
+### sdr2hdr
+```
+./ffmpeg -y -vf asr2=2,lut3d=./3a_bt709_hlg.cube,scale=in_range=tv:out_range=tv:in_color_matrix=bt709:out_color_matrix=bt2020ncl -c:v hevc_nvenc -pix_fmt yuv420p10 -color_primaries bt2020 -colorspace  bt2020_ncl  -color_trc arib-std-b67  -sei hlg -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 7 -r 25 -aspect 16:9 -b:v 30000k -maxrate:v 35000k -c:a libfdk_aac -af volume=100/100  -ac 2 -ar 48000 -ab 192k
+```
+
 
 ### 查看编码参数
 
