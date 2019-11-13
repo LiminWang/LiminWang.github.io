@@ -207,7 +207,7 @@ ffmpeg -loglevel debug -i /root/420_10bit.ts -i /root/logo.png -filter_complex
 $ ffmpeg -i orig.ts -i ref.ts -lavfi  "ssim=ssim.log;[0:v][1:v]psnr=psnr.log" -y -f rawvideo /dev/null
 $ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "ssim=stats_file=ssim_stats.log" -f null -
 $ time ./ffmpeg -i xiangcun.mp4 -i h264_qsv_2000K.mp4 -filter_complex "psnr=stats_file=psnr_stats.log" -f null -
-```
+$ ./ffmpeg -i ref.mp4  -i cmp.mp4 -filter_complex "[0:v]scale=1920x1080:flags=bicubic[main];[main][1:v]libvmaf=model_path=./model/vmaf_v0.6.1.pkl:pool=mean:log_path=vmaf.log:shortest=1" -shortest -f null -
 
 
 ### 输出YUV数据
