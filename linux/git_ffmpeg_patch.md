@@ -1,4 +1,4 @@
-
+# git for ffmpeg patch
 
 ## 设置 git 用户的邮箱和姓名
 git config --global user.email "youremail@gmail.com"
@@ -62,6 +62,11 @@ git send-email -s -v2 -3
 git send-email -s -v2 -3 -cover-letter
 ```
 
+## 避免cc邮件给自己
+```
+git config --global sendemail.suppresscc self
+```
+
 ## 查看状态
 发送邮件过一段时间后(邮件没有加入列表时间会长）,在这里能查到
 [patch](https://patchwork.ffmpeg.org/project/ffmpeg/list/)
@@ -70,6 +75,7 @@ git send-email -s -v2 -3 -cover-letter
 ``
 git log --since=2019-03-30T00:00:00Z --until 2020-03-30T00:00:00Z --pretty=fuller | grep '^Author:' | sed 's/<.*//' |sort | uniq -c | sort -nr
 git log --since=2019-03-30T00:00:00Z --until 2020-03-30T00:00:00Z --pretty=fuller | grep '^Commit:' | sed 's/<.*//' |sort | uniq -c | sort -nr
+git shortlog -nse --since="1 years ago"
 ``
 
 

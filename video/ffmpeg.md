@@ -422,6 +422,18 @@ qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugin hevc_hw
  -c:v hevc_nvenc -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 100 -r 50 -aspect 16:9
  -b:v 16000k -maxrate:v 16000k  -c:a libfdk_aac -af volume=100/100 -ac 2 -ar 44100 -ab 48k -map 0:v? -map 0:a? -map 0:s? -movflags faststart -f mp4 test.mp4
 
+### PAL
+If it’s PAL chromaticities (=bt470bg), we then need to transcode as follows:
+```
+$ ffmpeg -i raw.mp4 -color_primaries bt470bg -color_trc gamma28 -colorspace bt470bg -r 25 -crf 18 screen-rec.mp4
+```
+
+### NTSC
+For NTSC chromaticities (=smpte170m), we’ll need a different set of primaries, transfer curve, and colorspace:
+```
+$ ffmpeg -i raw.mp4 -color_primaries smpte170m -color_trc smpte170m -colorspace smpte170m -r 25 -crf 18 screen-rec.mp4
+```
+
 ### HDR10
 
 ./ffmpeg_g -y -i 4K.mp4 -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
