@@ -82,7 +82,7 @@ $ ffmpeg -i left.mp4 -i right.mp4 -filter_complex \
  >>> left half video side by side
 
  ./ffmpeg -i ~/Movies/sr_source/src.ts -i ~/Movies/sr_source/ds_sr_4k.ts -filter_complex \
- "[0:v]setpts=PTS-STARTPTS,scale=3840x2160,crop=iw/2:ih[left];[1:v]setpts=PTS-STARTPTS,crop=iw/2:ih[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
+ "[0:v]setpts=PTS-STARTPTS,scale=3840x2160,crop=iw/2:ih:0:0[left];[1:v]setpts=PTS-STARTPTS,crop=iw/2:ih:0:0[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
  -map "[v]" -map "[a]" -ac 2 output.mp4
 
  >>> right half video side by side
@@ -102,6 +102,7 @@ $ ffmpeg -i top_l.mp4 -i top_r.mp4 -i bottom_l.mp4 -i bottom_r.mp4 -filter_compl
 
 $ ffplay -f lavfi "movie=left.mp4,scale=iw/2:ih[v0];movie=right.mp4,scale=iw/2:ih[v1];[v0][v1]hstack"
 $ ffplay -f lavfi "movie=side_by_side/cctv3.ts[v0];movie=side_by_side/cctv3.ts[v1];[v0][v1]vstack=inputs=2"
+$ ./ffplay -i ~/Movies/2.mkv -vf "split[a][b],[b]colordetect,colorlevels[c],[a][c]hstack=2"
 ./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
 ```
 
