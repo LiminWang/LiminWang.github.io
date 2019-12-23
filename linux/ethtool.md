@@ -79,3 +79,13 @@ TX:256
 [root@localhost ~]# ethtool -G eno1 rx 4096 tx 4096
 ```
 
+### How to keep the change after reboot
+
+In RHEL 7, you can set the ring buffer size to come up at boot time by setting the 
+```
+ETHTOOL_OPTS value in:
+/etc/sysconfig/network-scripts/ifcfg-eth0 to 
+(for example) 
+ETHTOOL_OPTS="-G ${DEVICE} rx 4096 tx 4096"
+```
+
