@@ -44,3 +44,15 @@ set record = ''
 ```
 mutt -s "Test from mutt" send_name@mail.server
 ```
+
+## 源代码编译mutt
+```
+sudo yum install slang-devel openssl-devel cyrus-sasl-devel tokyocabinet-devel
+wget ftp://ftp.mutt.org/pub/mutt/mutt-1.13.2.tar.gz
+tar czvf mutt-1.13.2.tar.gz && cd mutt-1.13.2
+
+tar czvf mutt-1.13.2.tar.gz && cd mutt-1.13.2
+configure --with-slang --with-sasl --with-ssl --enable-locales-fix --enable-pop --enable-imap --enable-smtp --enable-hcache --enable-hcache --enable-exact-address
+make && make install
+```
+
