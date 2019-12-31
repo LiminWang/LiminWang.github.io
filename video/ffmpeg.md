@@ -102,7 +102,7 @@ $ ffmpeg -i top_l.mp4 -i top_r.mp4 -i bottom_l.mp4 -i bottom_r.mp4 -filter_compl
 
 $ ffplay -f lavfi "movie=left.mp4,scale=iw/2:ih[v0];movie=right.mp4,scale=iw/2:ih[v1];[v0][v1]hstack"
 $ ffplay -f lavfi "movie=side_by_side/cctv3.ts[v0];movie=side_by_side/cctv3.ts[v1];[v0][v1]vstack=inputs=2"
-$ ./ffplay -i ~/Movies/2.mkv -vf "split[a][b],[b]colordetect,colorlevels[c],[a][c]hstack=2"
+$ ./ffplay -i ~/Movies/2.mkv -vf "split[a][b],[b]colordetect,eq=eval=frame[c],[a][c]hstack=2"
 ./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
 ```
 
@@ -299,8 +299,17 @@ $ ffmpeg -i input.mp4 -filter_complex
 ### sdr2hdr
 ```
 ./ffmpeg -y -vf asr2=2,lut3d=./3a_bt709_hlg.cube,scale=in_range=tv:out_range=tv:in_color_matrix=bt709:out_color_matrix=bt2020ncl -c:v hevc_nvenc -pix_fmt yuv420p10 -color_primaries bt2020 -colorspace  bt2020_ncl  -color_trc arib-std-b67  -sei hlg -preset medium -coder 1 -bf 0 -refs 3 -rc-lookahead 40 -sc_threshold 0 -g 7 -r 25 -aspect 16:9 -b:v 30000k -maxrate:v 35000k -c:a libfdk_aac -af volume=100/100  -ac 2 -ar 48000 -ab 192k
+
+./ffmpeg -f lavfi  -i color=white:duration=1:r=1:size=1280x720,colordetect,metadata=mode=print,lut3d=lut/4b.cube,colordetect,metadata=mode=print
 ```
 
+### 查看rgb color level
+```
+./ffplay -i histogram_source.jpg -vf format=rgb24,waveform=c=7:d=parade,scale=1200x512
+```
+
+### 对比质量
+./ffplay -i input.mp4 -sws_flags full_chroma_int+accurate_rnd+bicubic -vf "split[a][b],[b]colorstats,metadata=mode=print,eq=eval=frame,colorstats,metadata=mode=print[c],[a][c]hstack=2"
 
 ### 查看编码参数
 
