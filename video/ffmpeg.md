@@ -103,7 +103,7 @@ $ ffmpeg -i top_l.mp4 -i top_r.mp4 -i bottom_l.mp4 -i bottom_r.mp4 -filter_compl
 $ ffplay -f lavfi "movie=left.mp4,scale=iw/2:ih[v0];movie=right.mp4,scale=iw/2:ih[v1];[v0][v1]hstack"
 $ ffplay -f lavfi "movie=side_by_side/cctv3.ts[v0];movie=side_by_side/cctv3.ts[v1];[v0][v1]vstack=inputs=2"
 $ ./ffplay -i ~/Movies/2.mkv -vf "split[a][b],[b]colordetect,eq=eval=frame[c],[a][c]hstack=2"
-./ffmpeg -y  -i input.ts -i ./logo.png -filter_complex overlay=50:50:format=yuv420p10  -c:v hevc_videotoolbox ./test.ts
+./ffplay -i ~/Movies/2.mkv -sws_flags full_chroma_int+accurate_rnd+bicubic -vf "split[a][b],[a]crop=iw/2:ih:0:0[d],[b]colorstats,metadata=mode=print,eq=eval=frame,colorstats,metadata=mode=print,crop=iw/2:ih:iw/2:0[c],[d][c]hstack=2"
 ```
 
 ### 自动测试源
