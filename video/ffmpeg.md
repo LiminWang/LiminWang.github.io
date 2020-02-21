@@ -179,6 +179,11 @@ crop=iw:ih:iw/2:ih,pad=iw:ih[bg];[1:v]setpts=PTS-STARTPTS, crop=iw/2:ih:0:0[fg];
 $ ffplay -i ~/Movies/zhebiao.mp4 -vf find_rect=logo/detect_1.tif,cover_rect=logo/zhebiao_yuv.jpg:mode=cover
 ```
 
+### LOGO分段叠加
+```
+./ffmpeg -i input.mp4 -i logo1.png -i logo2.png -i logo3.png -filter_complex "[1:v]scale=240:120[logo1],[2:v]scale=240:120[logo2],[3:v]scale=240:120[logo3],[0:v][logo1]overlay=100:100:enable='between(t,5,25)':eof_action=repeat[out0],[out0][logo2]overlay=100:100:enable='between(t,20,35)':eof_action=pass[out1],[out1][logo3]overlay=50:50:enable='gte(t,0)':eof_action=repeat" output.mp4
+```
+
 ### OCR text
 * build ffmpeg --with-tesseract
 
