@@ -132,6 +132,12 @@ $ ffmpeg -y -loop 1 -i ~/Downloads/cctv5.png -i /Users/lmwang/Downloads/dongfang
 $ ffmpeg -y -r 25 -loop 1 -i ./cctv5.png  -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 -c:a mp2  -t 120 output.mp4
 ```
 
+### 字幕硬叠加到视频
+‘’‘
+./ffmpeg -i ~/Downloads/multiaudioandsubtitles_4sub.ts -filter_complex '[0:5] setpts=PTS+1/TB [sub];[0:0] [sub] overlay' -sn -map 0:1 out.mp4
+···
+
+
 ### 叠加马赛克
 
 ```
