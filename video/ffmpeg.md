@@ -138,6 +138,13 @@ $ ffmpeg -y -r 25 -loop 1 -i ./cctv5.png  -f lavfi -i anullsrc=channel_layout=st
 ···
 
 
+## subtitle copy
+```
+./ffmpeg -i ~/Movies/720p-h264-23.97fps-8bits-420-SDR-4M-4min36sec-2audio-2subtitle.mkv  -map 0:v -map 0:a -map 0:s:0 -map 0:s:1 -c:v copy -c:a copy -c:s srt -disposition:s:0 forced -metadata:s:s:0 language=chi -metadata:s:s:0 title="Chinese" -metadata:s:s:1 language=eng -metadata:s:s:1 title="English"   ~/Movies/test.mkv
+
+./ffmpeg -i ~/Movies/720p-h264-23.97fps-8bits-420-SDR-4M-4min36sec-2audio-2subtitle.mkv  -map 0:v -map 0:a -map 0:s:0 -map 0:s:1 -c:v copy -c:a copy -c:s mov_text -disposition:s:0 forced -metadata:s:s:0 language=chi -metadata:s:s:0 title="Chinese" -metadata:s:s:1 language=eng -metadata:s:s:1 title="English"   ~/Movies/test.mp4
+```
+
 ### 叠加马赛克
 
 ```
