@@ -7,6 +7,7 @@
 $ ffprobe -i input.mp4 -v quiet -of json -show_format -show_streams
 $ ffprobe -v quiet -select_streams v -show_frames input.ts -of json
 $ ffprobe -v quiet -select_streams v -show_frames -show_entries frame=key_frame,pkt_pts_time,pict_type  input.ts -of json
+$ ffprobe -select_streams v -skip_frame nokey -show_frames -show_entries frame=pkt_pts_time,pkt_duration_time,pkt_pos -v quiet input.ts -threads 0 -of compact | cut -d '|' -f 2
 $ ffprobe -v quiet -show_entries stream=codec_type,start_time,duration input.mp4 -of json
 $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=/home/lmwang/movie/zhebiao.mp4,crop=iw/4:ih/4,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo" > test.out
 $ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo,metadata=print:file=result.txt"
