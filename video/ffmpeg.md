@@ -377,6 +377,11 @@ output.mp4
 ./ffmpeg -threads 4 -vsync 1 -i ~/Movies/input.mp4 -r 25 \
 -use_localtime 1 -use_localtime_mkdir 1 -hls_segment_filename \
 '%Y%m%d/file-%Y%m%d-%s.ts' ~/Movies/hls/out.m3u8
+
+./ffmpeg -re -i ~/Movies/logo_test/cctv7.ts -c:a copy -c:v libx264 \
+ -f hls -hls_time 2 -hls_playlist_type event -master_pl_name \
+ index.m3u8 -hls_segment_filename stream_%v/data%06d.ts -use_localtime_mkdir 1 \
+ -var_stream_map 'v:0,a:0' stream_%v.m3u8
 ```
 
 ### hls multiple output
