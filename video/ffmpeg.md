@@ -11,9 +11,13 @@ $ ffprobe -select_streams v -skip_frame nokey -show_frames -show_entries frame=p
 $ ffprobe -v quiet -show_entries stream=codec_type,start_time,duration input.mp4 -of json
 $ ffprobe -show_entries frame_tags=lavfi.ocr.text -f lavfi -i "movie=/home/lmwang/movie/zhebiao.mp4,crop=iw/4:ih/4,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo" > test.out
 $ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo,metadata=print:file=result.txt"
-$ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo,metadata=print:key=lavfi.ocr.text"
--f null -
--f null -
+$ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapath=../3rdparty_img/share/tessdata/:language=bravo,metadata=print:key=lavfi.ocr.text" -f null -
+
+```
+
+## 关键帧间隔
+```
+$ ffprobe -show_frames -select_streams v:0 -print_format csv ./test_gop.ts 2> /dev/null | awk -F ',' '{ if ($4 > 0) print NR; }'
 ```
 
 ## 截图
