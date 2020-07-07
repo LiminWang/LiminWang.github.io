@@ -509,6 +509,8 @@ fate-h264-brokensps-2580
 
 
 ### decklink采集卡测试
+./ffmpeg -sources
+./ffmpeg -y -timecode_format rp188any  -f decklink -i 'DeckLink 8K Pro (1)' -vf showinfo -f null -
 ./ffmpeg -y -raw_format yuv422p10 -format_code 4k59 -f decklink \
 -i 'DeckLink 8K Pro (1)' -vf \
 scale=3840x2160:flags=fast_bilinear,format=pix_fmts=yuv420p \
