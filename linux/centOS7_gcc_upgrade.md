@@ -18,7 +18,7 @@ $ sudo yum install devtoolset-9
 ## 切换gcc版本
 ```
 $ gcc --version
-$ sudo scl enable devtoolset-9 bash
+$ scl enable devtoolset-9 bash
 $ gcc --version
 ```
 

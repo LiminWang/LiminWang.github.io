@@ -150,6 +150,14 @@ $ ffmpeg -y -r 25 -loop 1 -i ./cctv5.png  -f lavfi -i anullsrc=channel_layout=st
 ./ffmpeg -i ~/Movies/720p-h264-23.97fps-8bits-420-SDR-4M-4min36sec-2audio-2subtitle.mkv  -map 0:v -map 0:a -map 0:s:0 -map 0:s:1 -c:v copy -c:a copy -c:s mov_text -disposition:s:0 forced -metadata:s:s:0 language=chi -metadata:s:s:0 title="Chinese" -metadata:s:s:1 language=eng -metadata:s:s:1 title="English"   ~/Movies/test.mp4
 ```
 
+### readvitc
+```
+./ffplay -vf "readvitc=scan_max=30,readeia608=scan_max=30,crop=iw:30:0:0,scale=720:480:flags=neighbor,setdar=4/3,drawtext=fontfile=/Library/Fonts/Courier\ New.ttf:fontcolor=white:fontsize=36:box=1:boxcolor=black@0.5:x=(w-tw)/2:y=h*3/4-ascent:text=VITC %{metadata\\\:lavfi.readvitc.tc_str\\\:-- -- -- --},drawtext=fontfile=/Library/Fonts/Courier\ New.ttf:fontcolor=white:fontsize=36:box=1:boxcolor=black@0.5:x=(w-tw)/2:y=400-ascent:text=Line %{metadata\\\:lavfi.readeia608.0.line\\\:-} %{metadata\\\:lavfi.readeia608.0.cc\\\:------} - Line %{metadata\\\:lavfi.readeia608.1.line\\\:-} %{metadata\\\:lavfi.readeia608.1.cc\\\:------}" ~/Movies/mpeg2_cc.ts
+```
+
+### 同步测试
+./ffplay  -f lavfi "movie=filename='http\://192.168.1.187\:8080/huawei/1080p-1.m3u8',drawtext=fontfile=/System/Library/Fonts/ArialHB.ttc:fontsize=48:fontcolor=white:text=\\'%{pts\:hms}\,%{metadata\\:timecode}\\'[a];movie=filename='http\://192.168.1.187\:8080/huawei/1080p-2.m3u8',drawtext=fontfile=/System/Library/Fonts/ArialHB.ttc:fontsize=48:fontcolor=white:text=\\'%{pts\: hms}\,%{metadata\\:timecode}\\'[b];[a][b]hstack"
+
 ### 叠加马赛克
 
 ```
@@ -482,6 +490,9 @@ $ ffmpeg -i raw.mp4 -color_primaries smpte170m -color_trc smpte170m -colorspace 
     -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc smpte2084 -sei hdr10  -master_display \
     "G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50)" -max_cll "0, 0" test.ts
 
+./obj/3rdparty/ffmpeg/ffmpeg-3.4/ffmpeg -i ~/movie/4K_HDR/LG.4K.HDR.Demo.Daylight.mkv  -c:v libsvt_hevc \
+    -hdr 1 -master_display "G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50)" -max_cll "0, 0" test.ts
+
 ### HLG
 ./ffmpeg_g -i 420_10bit.ts -c:v hevc_nvenc -preset hq -b:v 20000k -strict_gop 1 -no-scenecut 1 -g 7 \
     -aud 1 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -sei hlg test.ts
@@ -507,6 +518,8 @@ fate-h264-brokensps-2580
 ./ffmpeg_g -loglevel trace -i ./fate-suite/h264/brokensps.flv -filter_threads 9 -vf format=yuv420p,scale=w=192:h=144 -sws_flags bitexact+bilinear -f framecrc -
 ./ffmpeg_g -y -i ./fate-suite/h264/reinit-large_420_8-to-small_420_8.h264  -filter_threads 9 -vf format=yuv444p10le,scale=w=352:h=288 -sws_flags bitexact+bilinear -f framecrc -
 
+### MXF
+./ffmpeg -i test.mxf -r 50 -c:v libx264 -me_method tesa -subq 9 -partitions all -direct-pred auto -psy 0 -b:v 500M -bufsize 500M -maxrate 500M -minrate 500M -level 5.1 -g 0 -keyint_min 0 -x264opts filler  -x264opts force-cfr -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67 -preset superfast -tune fastdecode -c:a pcm_s24le output.mxf
 
 ### decklink采集卡测试
 ./ffmpeg -sources
@@ -520,6 +533,12 @@ scale=3840x2160:flags=fast_bilinear,format=pix_fmts=yuv420p \
 -i 'DeckLink 8K Pro (1)' -vf \
 scale=3840x2160:flags=fast_bilinear,format=pix_fmts=p010le \
 -codec:v nvenc_hevc -ac 2 -acodec libfdk_aac -ar 44100 -ab 48k -f mpegts /dev/null
+
+./ffmpeg -r 29.97 -s 1280x720 -pix_fmt nv12 -f avfoundation -i "1:0" -filter_threads 1 -c:v libx265 -threads 1 -trellis 0 -subq 1  -preset ultrafast -tune zerolatency -flags2 local_header -acodec aac -pkt_size 1316 -flush_packets 0 -fflags nobuffer  -b:v 1500k -g 12  -pix_fmt nv12  -f mpegts "srt://192.168.1.82:8080?&send_buffer_size=4096&rcvlatency=0&recv_buffer_size=4096&transtype=live&latency=0&peerlatency=0&rcvlatency=0&streamid=uplive.cybercloud.com.cn/live/test"
+
+./ffplay -analyzeduration 1 -fflags nobuffer -probesize 32  "srt://192.168.1.82:8080?streamid=live.cybercloud.com.cn/live/test"
+./ffplay -analyzeduration 1 -fflags nobuffer -probesize 32 "srt://192.168.1.113:8080?streamid=live.cybercloud.com.cn/live/test" \
+    -vf drawtext="fontfile=/Library/Fonts/Arial.ttf:fontcolor=white:text=\\'%{metadata\\:timecode}\\'"
 
 # FFmpeg resource
 * [Create a mosaic out of several input videos](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos)
