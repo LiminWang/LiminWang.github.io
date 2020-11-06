@@ -100,6 +100,8 @@ $ ffmpeg -i left.mp4 -i right.mp4 -filter_complex \
 ""[0:v]setpts=PTS-STARTPTS[left];[1:v]setpts=PTS-STARTPTS[right];[left][right]hstack=inputs=2[v];[0:a][1:a]amerge[a]" \
 -map "[v]" -map "[a]" -ac 2 output.mp4
 
+$ ./ffplay  -fflags nobuffer  -protocol_whitelist rtp,udp,file -f lavfi  "movie=filename='1_4.sdp'\:s='v\:0\+v\:1+v\:2\+v\:3+a\:0'[a][b][c][d][out1];[a][b][c][d]xstack=inputs=4:layout=0_0|0_h0|w0_0|w0_h0[out0]"
+
 $ ffmpeg -i top_l.mp4 -i top_r.mp4 -i bottom_l.mp4 -i bottom_r.mp4 -filter_complex \
 "[0:v][1:v]hstack[t];[2:v][3:v]hstack[b];[t][b]vstack[v]; \
  [0:a][1:a][2:a][3:a]amerge=inputs=4[a]" \
