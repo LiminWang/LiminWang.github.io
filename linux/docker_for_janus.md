@@ -78,26 +78,29 @@ docker images
 ## 列出当前所有正在运行的容器
 docker ps
 
-## 进入容器ID为6fefcaba0555的容器
-docker attach 6fefcaba0555  
+## 进入容器ID为ffffffff的容器
+docker attach ffffffff 
 
-## 进入正在执行的容器ID为6fefcaba0555的容器
-docker exec -it 2c9fa8c075bb  /bin/bash
+## 查询网络情况
+docker inspect ffffffff
+
+## 进入正在执行的容器ID为ffffffff的容器
+docker exec -it ffffffff  /bin/bash
 
 ## 启动容器
-docker start 6fefcaba0555
+docker start ffffffff
 
 ## 停止正在运行的容器
-docker stop 6fefcaba0555
+docker stop ffffffff
 
 ## 重启容器
-docker restart 6fefcaba0555
+docker restart ffffffff
 
 ## 删除容器
-docker rm 6fefcaba0555
+docker rm ffffffff
 
 ## 删除镜像
-docker rmi 6fefcaba0555
+docker rmi ffffffff
 
 ## 备份镜像
 docker save -o ~/ubuntu.tar ubuntu
