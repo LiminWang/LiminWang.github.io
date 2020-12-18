@@ -20,6 +20,13 @@ $ ffmpeg -y -i /home/lmwang/movie/zhebiao.mp4 -vf "crop=iw/4:ih/4:0:0,ocr=datapa
 $ ffprobe -show_frames -select_streams v:0 -print_format csv ./test_gop.ts 2> /dev/null | awk -F ',' '{ if ($4 > 0) print NR; }'
 ```
 
+## NDI
+```
+./ffmpeg -i ~/Downloads/input.mkv -f libndi_newtek -clock_video true -clock_audio true -pix_fmt uyvy422 "OUTPUT"
+./ffmpeg -f libndi_newtek -find_sources 1 -i dummy
+./ffplay -f libndi_newtek -i "MACBOOK.LOCAL (OUTPUT)"
+```
+
 ## 截图
 ### 截取一帧
 * 命令

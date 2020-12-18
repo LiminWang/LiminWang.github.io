@@ -102,6 +102,9 @@ docker rm ffffffff
 ## 删除镜像
 docker rmi ffffffff
 
+## 清除停止容器
+docker container prune
+
 ## 备份镜像
 docker save -o ~/ubuntu.tar ubuntu
 
