@@ -242,6 +242,10 @@ ffmpeg -loglevel debug -i /root/420_10bit.ts -i /root/logo.png -filter_complex
 -c:v hevc_nvenc a.ts
 ```
 
+### 调整logo透明度(0.5)
+```
+ ffmpeg -i input.png -filter_complex "format=argb,geq=r='r(X,Y)':a='0.5*alpha(X,Y)'" ./out.png
+ ```
 
 ###  psnr和ssim质量比较
 ```
@@ -456,8 +460,53 @@ $ ffmpeg -debug vis_mb_type -i input.mp4 output.mp4
 "sws_flags=+accurate_rnd+bitexact;movie=/Users/lmwang/Movies/Passengers_Breakfast_1080-sdr.mkv,select=gt(scene\,.25)"
 ```
 
+### DNxHD
+* DNxHD vs DNxHR
+
+You probably noticed we were talking about the DNxHR codec, but specified DNxHD in our FFmpeg command as the encoder.
+FFmpeg uses the older DNxHD codec if you do not specify a DNxHR profile. This is why we added the “dnxhr_lb” bit. This
+means we told it to actually use the DNxHR Low Bandwidth 8-bit 4:2:2 profile to transcode. It’s a little quirky, but
+this is how FFmpeg implemented the two codecs. I’m told their logic was that DNxHR is meant to be backwards compatible with DNxHD.
+
+How about bit depth for color? Same thing. Everything is 8-bit, except for DNxHR HQX and DNxHR 444 which will go up to
+12-bit by codec spec. So if you shoot 10-bit 4:2:2 pick DNxHR HQX and if it’s 4:4:4 choose DNxHR 444. Same thing for
+12-bit, just select a slightly different pixel format. If you’re just shooting 4:2:0 or 4:2:2 with 8-bit, any of the
+others will work for you depending on data rate requirements, but HQX and 444 are unnecessary.
+
+Codec Profile	Bit Depth	Chroma SS	Compression	FFmpeg Setting
+DNxHR LB	8-bit Color	4:2:2	22 to 1 CR	Filter: yuv422p Profile: dnxhr_lb
+DNxHR SQ	8-bit Color	4:2:2	7 to 1 CR	Filter: yuv422p Profile: dnxhr_sq
+DNxHR HQ	8-bit Color	4:2:2	4.5 to 1 CR	Filter: yuv422p Profile: dnxhr_hq
+DNxHR HQX	<= 12-bit Color	4:2:2	5.5 to 1 CR	Filter: yuv422p10le Filter: yuv422p12le
+Profile: dnxhr_hqx DNxHR 444 <= 12-bit Color	4:4:4	4.5 to 1 CR	Filter: yuv444p10le/yuv444p12le Profile: dnxhr_444
+
+* Dealing With Audio Streams
+Let’s discuss is how to keep your audio stream with your transcoding. The DNxHR codec in FFmpeg supports PCM audio
+in a Waveform Audio File Format (WAVE/WAV) container in 16-bit and 24-bit, but only at 48KHz. This is done via the
+pcm_s16le and pcm_s24le audio codec and “ar” FFmpeg options.
+
+
+https://avid.secure.force.com/pkb/articles/en_US/White_Paper/DNxHR-Codec-Bandwidth-Specifications
+
+./ffmpeg -i -c:v dnxhd -vf "scale=1280:720,fps=24000/1001,format=yuv422p" -profile:v dnxhr_lb -c:a pcm_s16le -ar 48000 -hide_banner testfile.mxf
+185x逐行
+./ffmpeg  -f lavfi -i "testsrc=size=1920x1080:rate=25" -c:v dnxhd -vf "scale=1920:1080,fps=25,format=yuv422p10" -b:v 185M -c:a pcm_s16le -ar 48000 out.mxf
+185x隔行
+./ffmpeg  -f lavfi -i "testsrc=size=1920x1080:rate=25" -vf "scale=1920:1080,fps=25,format=yuv422p10" -c:v dnxhd  -flags +ildct -top 1 -b:v 185M -c:a pcm_s16le -ar 48000 out.mxf
+
+185逐行
+./ffmpeg  -f lavfi -i "testsrc=size=1920x1080:rate=25" -c:v dnxhd -vf "scale=1920:1080,fps=25,format=yuv422p" -b:v 185M -c:a pcm_s16le -ar 48000  -metadata material_package_name="test"  out.mxf
+
 ### xavc mxf输出
 
+* 4K XAVC-I Class 300 50p
+ffmpeg -guess_layout_max 0 -i input.mov -r 50 -c:v libx264 -me_method tesa -subq 9 -partitions all -direct-pred auto -psy 0 -b:v 500M -bufsize 500M -level 5.1 -g 0 -keyint_min 0 -x264opts filler -x264opts avcintra-flavor=sony -x264opts avcintra-class=300 -x264opts colorprim=bt709 -x264opts transfer=bt709 -x264opts colormatrix=bt709 -x264opts force-cfr -preset superfast -tune fastdecode -c:a pcm_s24le out.ts
+
+
+* 4K XAVC-I Class 480 50p
+./ffmpeg -i input.mov -c:v libx264 -pix_fmt yuv422p10 -me_method tesa -subq 9 -partitions all -direct-pred auto -psy 0 -b:v 800M -bufsize 800M -level 5.2 -g 0 -keyint_min 0 -x264opts filler -x264opts avcintra-flavor=sony -x264opts avcintra-class=480 -color_primaries bt2020 -colorspace bt2020_ncl -color_trc arib-std-b67  -x264opts force-cfr -preset superfast -tune fastdecode -c:a pcm_s24le out.mxf
+
+### qsv
 ./ffmpeg -hwaccel qsv -hwaccel_device /dev/dri/renderD128 -hwaccel_output_format
 qsv -i 4k_h264_60fps.mp4 -c:v hevc_qsv -b:v 8M -maxrate 8M -load_plugins
 6fadc791a0c2eb479ab6dcd5ea9da347 output.mp4
